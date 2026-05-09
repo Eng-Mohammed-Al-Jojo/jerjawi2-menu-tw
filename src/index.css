@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   COLOR SYSTEM — Extracted from Al Jerjawi Logo
+   Primary sample: #7AC23A
+   ========================================================== */
+
+@theme {
+  --color-primary-50: var(--menu-primary-50);
+  --color-primary-100: var(--menu-primary-100);
+  --color-primary-200: var(--menu-primary-200);
+  --color-primary-300: var(--menu-primary-300);
+  --color-primary-400: var(--menu-primary-400);
+  --color-primary-500: var(--menu-primary);
+  --color-primary-600: var(--menu-primary-600);
+  --color-primary-700: var(--menu-primary-700);
+  --color-primary-800: var(--menu-primary-800);
+  --color-primary-900: var(--menu-primary-900);
+  --color-primary: var(--color-primary-500);
+
+  --color-secondary-50: var(--menu-accent-50);
+  --color-secondary-100: var(--menu-accent-100);
+  --color-secondary-200: var(--menu-accent-200);
+  --color-secondary-300: var(--menu-accent-300);
+  --color-secondary-400: var(--menu-accent-400);
+  --color-secondary-500: var(--menu-accent);
+  --color-secondary-600: var(--menu-accent-600);
+  --color-secondary-700: var(--menu-accent-700);
+  --color-secondary-800: var(--menu-accent-800);
+  --color-secondary-900: var(--menu-accent-900);
+  --color-secondary: var(--color-secondary-500);
+
+  --shadow-premium: var(--menu-shadow-premium);
+  --shadow-soft: var(--menu-shadow-soft);
+}
+
+/* ===== Glassmorphism ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Custom Scrollbar ===== */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--menu-border);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--menu-border-strong);
+}
+
+/* ===== Global Utils ===== */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --menu-primary: #7ac23a;
+  --menu-primary-50: #f4faee;
+  --menu-primary-100: #e8f5db;
+  --menu-primary-200: #d1ebb8;
+  --menu-primary-300: #b5df8e;
+  --menu-primary-400: #99d164;
+  --menu-primary-600: #5fa429;
+  --menu-primary-700: #477d22;
+  --menu-primary-800: #345f1e;
+  --menu-primary-900: #264819;
+
+  --menu-accent: #f28a2e;
+  --menu-accent-50: #fff6ed;
+  --menu-accent-100: #ffead3;
+  --menu-accent-200: #ffd3a6;
+  --menu-accent-300: #ffb66f;
+  --menu-accent-400: #fb9d46;
+  --menu-accent-600: #d96e18;
+  --menu-accent-700: #ad5314;
+  --menu-accent-800: #884217;
+  --menu-accent-900: #6e3717;
+
+  --menu-bg: #FAF7F2;
+  --menu-surface: #fffdf8;
+  --menu-card-bg: #fffaf1;
+  --menu-card-elevated: #ffffff;
+  --menu-text: #25301f;
+  --menu-text-muted: #75806d;
+  --menu-border: #eadfcd;
+  --menu-border-strong: #d9c9af;
+  --menu-overlay: rgba(37, 48, 31, 0.58);
+  --menu-shadow-soft: 0 10px 28px -16px rgba(37, 48, 31, 0.28);
+  --menu-shadow-premium: 0 24px 60px -28px rgba(37, 48, 31, 0.42);
+
+  --bg-main: var(--menu-bg);
+  --bg-surface: var(--menu-surface);
+  --bg-card: var(--menu-card-bg);
+  --text-primary: var(--menu-text);
+  --text-secondary: var(--menu-text-muted);
+  --text-muted: var(--menu-text-muted);
+  --border-light: var(--menu-border);
+  --border-base: var(--menu-border-strong);
+  --text-main: var(--menu-text);
+  --border-color: var(--menu-border);
+
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.menu-wrapper {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+/* ==========================================================
+   ANIMATIONS
+   ========================================================== */
+@keyframes pulseScale {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulseScale {
+  animation: pulseScale 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Swiper Styles */
+.swiper-pagination-bullet-active {
+  background-color: var(--color-primary) !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-primary) !important;
+  background: var(--menu-card-elevated);
+  box-shadow: var(--shadow-soft);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px !important;
+}

@@ -1,0 +1,14 @@
+{
+  "images": [
+    "images/logo.png"
+  ],
+  "payment": [
+    "images/payment/bop.png",
+    "images/payment/ipb.png",
+    "images/payment/jawwalPay.png",
+    "images/payment/malshaat.jpeg",
+    "images/payment/palPay.jpeg",
+    "images/payment/اسلامي عربي.png",
+    "images/payment/بنك القدس.png"
+  ]
+}
