@@ -13,7 +13,7 @@ function Toast({ type, message }: { type: "success" | "error"; message: string }
             initial={{ opacity: 0, y: -20, x: "-50%" }}
             animate={{ opacity: 1, y: 30, x: "-50%" }}
             exit={{ opacity: 0, y: -20, x: "-50%" }}
-            className={`fixed top-0 left-1/2 z-200 px-10 py-5 rounded-full shadow-premium text-white font-black flex items-center gap-4 backdrop-blur-xl border border-white/20 transition-all ${type === "success" ? "bg-emerald-500/95" : "bg-secondary/95"}`}
+            className={`fixed top-0 left-1/2 z-200 px-4 py-2.5 rounded-full shadow-premium text-white font-black flex items-center gap-4 backdrop-blur-xl border border-white/20 transition-all ${type === "success" ? "bg-emerald-500/95" : "bg-secondary/95"}`}
         >
             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm">
                 {type === "success" ? <FiCheck /> : "×"}
@@ -24,7 +24,7 @@ function Toast({ type, message }: { type: "success" | "error"; message: string }
 }
 
 /* ================= Simple Components ================= */
-const inputClass = "w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold outline-none focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all placeholder:text-gray-300";
+const inputClass = "w-full bg-gray-50 border border-gray-100 rounded-2xl px-3 py-2.5 h-10 text-[13px] font-bold outline-none focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all placeholder:text-gray-300";
 
 function ServiceCheckbox({ title, enabled, onToggle, value, setValue, disabled, icon: Icon, required, isWaMode }: any) {
     const { t, i18n } = useTranslation();
@@ -35,14 +35,14 @@ function ServiceCheckbox({ title, enabled, onToggle, value, setValue, disabled, 
     return (
         <motion.div
             whileHover={!disabled ? { y: -4, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" } : {}}
-            className={`relative p-8 rounded-4xl border transition-all duration-500 group overflow-hidden ${enabled
+            className={`relative p-4 rounded-2xl border transition-all duration-500 group overflow-hidden ${enabled
                 ? "bg-white border-primary/20 shadow-premium"
                 : "bg-gray-50 border-gray-100 opacity-70 hover:opacity-100"
                 } ${disabled ? "opacity-40 grayscale pointer-events-none" : ""}`}
         >
             <div className="flex items-center justify-between mb-4 relative z-10">
                 <div className="flex items-center gap-5">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl transition-all duration-500 ${enabled
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl transition-all duration-500 ${enabled
                         ? "bg-primary text-white shadow-xl shadow-primary/20"
                         : "bg-white text-gray-400 border border-gray-100"
                         }`}>
@@ -200,33 +200,33 @@ export default function OrderSettingsModal({ setShowOrderSettings, orderSettings
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative bg-white w-full max-w-2xl rounded-[3rem] border border-gray-100 shadow-premium flex flex-col max-h-[90vh] overflow-hidden z-10"
+                className="relative bg-white w-full max-w-2xl rounded-2xl border border-gray-100 shadow-premium flex flex-col max-h-[90vh] overflow-hidden z-10"
             >
                 {/* Header */}
-                <div className="p-10 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+                <div className="p-3 sm:p-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
                     <div className="flex items-center gap-6">
-                        <div className="w-16 h-16 rounded-3xl bg-primary text-white flex items-center justify-center text-3xl shadow-xl shadow-primary/20">
+                        <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center text-xl shadow-xl shadow-primary/20">
                             <FiSettings />
                         </div>
                         <div>
-                            <h2 className="text-2xl font-black text-gray-900 tracking-tight">{t('admin.system_settings')}</h2>
+                            <h2 className="text-lg font-extrabold text-gray-900 tracking-tight">{t('admin.system_settings')}</h2>
                             <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mt-1">{t('admin.system_config_desc')}</p>
                         </div>
                     </div>
                     <button
                         onClick={() => setShowOrderSettings(false)}
-                        className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white text-gray-400 hover:text-secondary hover:bg-secondary/10 transition-all border border-gray-100 shadow-soft"
+                        className="w-9 h-9 flex items-center justify-center rounded-2xl bg-white text-gray-400 hover:text-secondary hover:bg-secondary/10 transition-all border border-gray-100 shadow-soft"
                     >
                         <FiX size={24} />
                     </button>
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 overflow-y-auto p-10 space-y-10 custom-scrollbar">
+                <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 custom-scrollbar">
                     {/* Order Module Toggle */}
-                    <div className="p-8 rounded-4xl bg-primary/5 border border-primary/10 flex items-center justify-between shadow-sm">
+                    <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-between shadow-sm">
                         <div className="flex items-center gap-5">
-                            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-inner ${orderSystem ? "bg-primary text-white" : "bg-white text-gray-300"}`}>
+                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-inner ${orderSystem ? "bg-primary text-white" : "bg-white text-gray-300"}`}>
                                 <FiSmartphone />
                             </div>
                             <div className="flex flex-col">
@@ -243,12 +243,12 @@ export default function OrderSettingsModal({ setShowOrderSettings, orderSettings
                     </div>
 
                     {/* ✅ Dual Pricing / Order Modes Config */}
-                    <div className="space-y-6">
+                    <div className="space-y-3">
                         <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 px-2">{t('admin.dual_pricing_modes') || "أوضاع الطلب والأسعار"}</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {/* Dine-In Mode Hidden */}
                             <div className="hidden">
-                                <div className={`p-6 rounded-3xl border transition-all ${dineInEnabled ? "bg-white border-primary/20 shadow-sm" : "bg-gray-50 border-gray-100 opacity-60"}`}>
+                                <div className={`p-6 rounded-xl border transition-all ${dineInEnabled ? "bg-white border-primary/20 shadow-sm" : "bg-gray-50 border-gray-100 opacity-60"}`}>
                                     <div className="flex items-center justify-between mb-4">
                                         <div className="flex items-center gap-3">
                                             <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${dineInEnabled ? "bg-primary/10 text-primary" : "bg-gray-200 text-gray-400"}`}>
@@ -269,7 +269,7 @@ export default function OrderSettingsModal({ setShowOrderSettings, orderSettings
                                 </div>
                             </div>
 
-                            <div className={`p-6 rounded-3xl border transition-all ${takeawayEnabled ? "bg-white border-primary/20 shadow-sm" : "bg-gray-50 border-gray-100 opacity-60"}`}>
+                            <div className={`p-6 rounded-xl border transition-all ${takeawayEnabled ? "bg-white border-primary/20 shadow-sm" : "bg-gray-50 border-gray-100 opacity-60"}`}>
                                 <div className="flex items-center justify-between mb-4">
                                     <div className="flex items-center gap-3">
                                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${takeawayEnabled ? "bg-primary/10 text-primary" : "bg-gray-200 text-gray-400"}`}>
@@ -294,7 +294,7 @@ export default function OrderSettingsModal({ setShowOrderSettings, orderSettings
                     {/* Order Mode Switch */}
                     <div className="space-y-4">
                         <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 px-2">{t('admin.order_source_mode') || "وضع استقبال الطلبات"}</h3>
-                        <div className="relative grid grid-cols-2 p-2 bg-gray-100 rounded-3xl overflow-hidden border border-gray-100">
+                        <div className="relative grid grid-cols-2 p-2 bg-gray-100 rounded-xl overflow-hidden border border-gray-100">
                             <motion.div
                                 className="absolute top-2 bottom-2 w-[calc(50%-8px)] bg-white rounded-2xl shadow-premium"
                                 animate={{
@@ -357,9 +357,9 @@ export default function OrderSettingsModal({ setShowOrderSettings, orderSettings
                     </AnimatePresence>
 
                     {/* Complaints */}
-                    <div className="p-8 rounded-4xl bg-secondary/5 border border-secondary/10 space-y-6 relative group overflow-hidden">
+                    <div className="p-4 rounded-2xl bg-secondary/5 border border-secondary/10 space-y-6 relative group overflow-hidden">
                         <div className="flex items-center gap-5">
-                            <div className="w-14 h-14 rounded-2xl bg-secondary text-white flex items-center justify-center shadow-xl shadow-secondary/20">
+                            <div className="w-10 h-10 rounded-xl bg-secondary text-white flex items-center justify-center shadow-xl shadow-secondary/20">
                                 <FiInfo size={24} />
                             </div>
                             <div>
@@ -379,15 +379,15 @@ export default function OrderSettingsModal({ setShowOrderSettings, orderSettings
                     </div>
 
                     {/* Footer Info */}
-                    <div className="p-10 rounded-[2.5rem] bg-gray-50 border border-gray-100 space-y-8 shadow-inner">
+                    <div className="p-5 rounded-2xl bg-gray-50 border border-gray-100 space-y-8 shadow-inner">
                         <div className="flex items-center gap-5">
-                            <div className="w-14 h-14 rounded-2xl bg-white text-primary flex items-center justify-center border border-gray-100 shadow-soft">
+                            <div className="w-10 h-10 rounded-xl bg-white text-primary flex items-center justify-center border border-gray-100 shadow-soft">
                                 <FiLayout size={24} />
                             </div>
                             <h3 className="font-black text-base text-gray-900 tracking-tight">{t('admin.footer_info')}</h3>
                         </div>
 
-                        <div className="space-y-6">
+                        <div className="space-y-3">
                             <div className="relative group">
                                 <FiLayout className={`absolute ${isRtl ? 'right-6' : 'left-6'} top-1/2 -translate-y-1/2 text-gray-300 transition-colors group-focus-within:text-primary`} />
                                 <input placeholder={t('admin.address_detail')} value={footer.address} onChange={(e) => setFooter({ ...footer, address: e.target.value })} className={`${inputClass} ${isRtl ? 'pr-16' : 'pl-16'} bg-white! shadow-soft`} />
@@ -422,13 +422,13 @@ export default function OrderSettingsModal({ setShowOrderSettings, orderSettings
                 </div>
 
                 {/* Footer Save */}
-                <div className="p-10 border-t border-gray-100 bg-gray-50/50">
+                <div className="p-3 sm:p-4 border-t border-gray-100 bg-gray-50/50">
                     <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={handleSave}
                         disabled={saving}
-                        className={`w-full py-6 rounded-4xl font-black text-white shadow-xl flex items-center justify-center gap-4 transition-all relative overflow-hidden group ${saving
+                        className={`w-full py-2.5 rounded-2xl font-black text-sm text-white shadow-xl flex items-center justify-center gap-4 transition-all relative overflow-hidden group ${saving
                             ? "bg-emerald-500/50 cursor-not-allowed"
                             : "bg-emerald-500 hover:bg-emerald-600 shadow-emerald-500/30"
                             }`}
@@ -442,7 +442,7 @@ export default function OrderSettingsModal({ setShowOrderSettings, orderSettings
                         ) : (
                             <FiCheck size={24} />
                         )}
-                        <span className="text-base uppercase tracking-widest">{t('admin.save_changes')}</span>
+                        <span className="text-sm uppercase tracking-widest">{t('admin.save_changes')}</span>
                     </motion.button>
                 </div>
 

@@ -335,10 +335,10 @@ export default function CartModal({ isOpen, onClose }: { isOpen: boolean; onClos
                     exit={{ y: "100%", opacity: 0.5 }}
                     transition={{ type: "spring", damping: 28, stiffness: 220 }}
                     className="
-                        relative w-full max-w-xl
+                        relative w-full max-w-sm sm:max-w-md
                         h-[95vh] sm:h-auto sm:max-h-[90vh]
                         bg-white
-                        sm:rounded-4xl rounded-t-4xl
+                        sm:rounded-2xl rounded-t-4xl
                         shadow-[0_-8px_40px_rgba(53,81,82,0.15)]
                         overflow-hidden flex flex-col z-10
                         border border-primary-100
@@ -348,16 +348,16 @@ export default function CartModal({ isOpen, onClose }: { isOpen: boolean; onClos
                     <div className="h-1 bg-linear-to-r from-primary via-primary-400 to-secondary shrink-0" />
 
                     {/* Header */}
-                    <div className="px-6 sm:px-8 pt-6 pb-5 flex items-center justify-between border-b border-gray-100 bg-white shrink-0">
+                    <div className="px-4 pt-4 pb-3 flex items-center justify-between border-b border-gray-100 bg-white shrink-0">
                         {/* Mobile drag handle */}
                         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-gray-100 rounded-full sm:hidden" />
 
                         <div className="flex items-center gap-4">
-                            <div className="w-14 h-14 rounded-2xl bg-linear-to-br from-primary to-primary-600 text-white flex items-center justify-center text-2xl shadow-xl shadow-primary/20 shrink-0">
+                            <div className="w-10 h-10 rounded-xl bg-linear-to-br from-primary to-primary-600 text-white flex items-center justify-center text-xl shadow-xl shadow-primary/20 shrink-0">
                                 {stepIcon}
                             </div>
                             <div>
-                                <h2 className="text-xl sm:text-2xl font-black text-gray-900 leading-tight tracking-tight">
+                                <h2 className="text-lg font-extrabold text-gray-900 leading-tight tracking-tight">
                                     {stepTitle}
                                 </h2>
                                 <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em] mt-1 opacity-60">
@@ -375,7 +375,7 @@ export default function CartModal({ isOpen, onClose }: { isOpen: boolean; onClos
                     </div>
 
                     {/* Progress Bar */}
-                    <div className="px-6 sm:px-8 py-3 flex items-center gap-2 bg-white shrink-0">
+                    <div className="px-4 py-2 flex items-center gap-2 bg-white shrink-0">
                         {STEPS.map((s, idx) => {
                             const isDone = idx < stepIdx;
                             const isActive = idx === stepIdx;
@@ -392,7 +392,7 @@ export default function CartModal({ isOpen, onClose }: { isOpen: boolean; onClos
                     {/* Scroll Content */}
                     <div
                         ref={scrollRef}
-                        className="flex-1 overflow-y-auto custom-scrollbar px-5 sm:px-7 py-4 pb-32 bg-gray-50"
+                        className="flex-1 overflow-y-auto custom-scrollbar px-3 py-3 pb-28 bg-gray-50"
                     >
                         <AnimatePresence mode="wait">
                             {step === "items" ? (
@@ -405,7 +405,7 @@ export default function CartModal({ isOpen, onClose }: { isOpen: boolean; onClos
                                 >
                                     {items.length === 0 ? (
                                         <div className="py-20 text-center flex flex-col items-center gap-4">
-                                            <div className="w-24 h-24 rounded-3xl bg-primary-50 border border-primary-100 flex items-center justify-center text-5xl">
+                                            <div className="w-12 h-12 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center text-5xl">
                                                 🛒
                                             </div>
                                             <h3 className="text-xl font-black text-gray-900">{t('common.empty_cart')}</h3>
@@ -425,7 +425,7 @@ export default function CartModal({ isOpen, onClose }: { isOpen: boolean; onClos
                                                 ))}
                                             </div>
                                             {/* Summary Card */}
-                                            <div className="mt-8 p-6 rounded-4xl bg-white border border-gray-100 shadow-soft relative overflow-hidden group">
+                                            <div className="mt-8 p-6 rounded-2xl bg-white border border-gray-100 shadow-soft relative overflow-hidden group">
                                                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110 duration-700" />
                                                 <div className="relative z-10 flex justify-between items-end">
                                                     <div className="space-y-1">
@@ -493,14 +493,14 @@ export default function CartModal({ isOpen, onClose }: { isOpen: boolean; onClos
 
                     {/* Footer CTA */}
                     {step === "items" && items.length > 0 && (
-                        <div className="absolute bottom-0 inset-x-0 px-6 sm:px-8 pb-8 pt-16 bg-linear-to-t from-gray-50 via-gray-50/95 to-transparent pointer-events-none z-30">
+                        <div className="absolute bottom-0 inset-x-0 px-4 pb-4 pt-16 bg-linear-to-t from-gray-50 via-gray-50/95 to-transparent pointer-events-none z-30">
                             <button
                                 onClick={() => setStep("order")}
-                                className="pointer-events-auto w-full py-5 bg-primary text-white rounded-4xl font-black text-lg flex items-center justify-between px-8 shadow-premium hover:bg-primary-600 hover:scale-[1.02] active:scale-[0.98] transition-all border border-primary-400/20 group"
+                                className="pointer-events-auto w-full py-3 bg-primary text-white rounded-2xl font-black text-[15px] flex items-center justify-between px-4 shadow-premium hover:bg-primary-600 hover:scale-[1.02] active:scale-[0.98] transition-all border border-primary-400/20 group"
                             >
                                 <span className="tracking-tight">{t('common.order_now')}</span>
                                 <div className="flex items-center gap-4">
-                                    <span className="text-2xl font-black">{totalAmount}₪</span>
+                                    <span className="text-lg font-extrabold">{totalAmount}₪</span>
                                     <div className="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
                                         <FiArrowRight className={isRtl ? "rotate-180" : ""} size={20} />
                                     </div>

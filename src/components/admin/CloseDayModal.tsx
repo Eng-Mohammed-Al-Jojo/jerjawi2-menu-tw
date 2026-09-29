@@ -43,23 +43,23 @@ export default function CloseDayModal({ isOpen, onClose, onConfirm }: Props) {
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="relative w-full max-w-lg bg-white rounded-[3rem] border border-gray-100 shadow-premium overflow-hidden z-10 p-8 md:p-12 text-center"
+                        className="relative w-full max-w-[22rem] sm:max-w-sm bg-white rounded-2xl border border-gray-100 shadow-premium overflow-hidden z-10 p-4 sm:p-5 text-center"
                     >
                         {/* Header Icon */}
-                        <div className="w-24 h-24 bg-red-50 text-red-500 rounded-4xl flex items-center justify-center mx-auto mb-8 text-4xl shadow-inner border border-red-100">
+                        <div className="w-9 h-9 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center mx-auto mb-3 text-xl shadow-inner border border-red-100">
                             <FiAlertTriangle />
                         </div>
 
                         {/* Title & Message */}
-                        <h3 className="text-3xl font-black text-gray-900 mb-4 tracking-tight">
+                        <h3 className="text-xl font-extrabold text-gray-900 mb-4 tracking-tight">
                             تأكيد الإغلاق اليومي
                         </h3>
-                        <p className="text-gray-500 font-medium mb-10 leading-relaxed text-sm">
+                        <p className="text-gray-500 font-medium mb-4 leading-relaxed text-sm">
                             سيتم إغلاق اليوم الحالي، ترحيل جميع الطلبات إلى ملف Excel، وحذفها من لوحة التحكم. لا يمكن التراجع عن هذه العملية.
                         </p>
 
                         {/* Checklist Section */}
-                        <div className="bg-gray-50 rounded-4xl border border-gray-100 p-8 mb-10 text-right space-y-4 shadow-inner">
+                        <div className="bg-gray-50 rounded-2xl border border-gray-100 p-3 mb-4 text-right space-y-4 shadow-inner">
                             <div className="flex items-center gap-4 text-emerald-600">
                                 <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
                                     <FiCheck size={14} />
@@ -85,7 +85,7 @@ export default function CloseDayModal({ isOpen, onClose, onConfirm }: Props) {
                             <button
                                 onClick={onClose}
                                 disabled={loading}
-                                className="flex-1 py-5 bg-gray-50 text-gray-400 border border-gray-100 rounded-2xl font-black text-sm hover:bg-gray-100 transition-all active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest disabled:opacity-50"
+                                className="flex-1 py-2.5 bg-gray-50 text-gray-400 border border-gray-100 rounded-2xl font-black text-sm hover:bg-gray-100 transition-all active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest disabled:opacity-50"
                             >
                                 <FiX size={20} />
                                 {t('common.cancel') || "إلغاء"}
@@ -93,7 +93,7 @@ export default function CloseDayModal({ isOpen, onClose, onConfirm }: Props) {
                             <button
                                 onClick={handleConfirm}
                                 disabled={loading}
-                                className="flex-[1.5] py-5 bg-red-600 text-white rounded-2xl font-black text-sm hover:bg-red-700 shadow-xl shadow-red-200 transition-all active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest disabled:opacity-50"
+                                className="flex-[1.5] py-2.5 bg-red-600 text-white rounded-2xl font-black text-sm hover:bg-red-700 shadow-xl shadow-red-200 transition-all active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest disabled:opacity-50"
                             >
                                 {loading ? (
                                     <motion.div

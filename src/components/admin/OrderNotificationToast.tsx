@@ -25,10 +25,10 @@ export default function OrderNotificationToast({ notifications, onClose, onView 
                         initial={{ opacity: 0, x: 100, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, x: 0, scale: 1, y: 0 }}
                         exit={{ opacity: 0, x: 100, scale: 0.9, transition: { duration: 0.3 } }}
-                        className="w-full bg-white border border-gray-100 shadow-premium rounded-[2.5rem] overflow-hidden pointer-events-auto flex flex-col group backdrop-blur-xl bg-opacity-95"
+                        className="w-full bg-white border border-gray-100 shadow-premium rounded-2xl overflow-hidden pointer-events-auto flex flex-col group backdrop-blur-xl bg-opacity-95"
                     >
                         <div className="p-6 flex items-start gap-5">
-                            <div className="w-16 h-16 rounded-3xl bg-primary text-white flex items-center justify-center shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500">
+                            <div className="w-11 h-11 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500">
                                 <FiShoppingBag size={32} className="animate-bounce" />
                             </div>
 
@@ -43,7 +43,7 @@ export default function OrderNotificationToast({ notifications, onClose, onView 
                                     </button>
                                 </div>
 
-                                <p className="text-3xl font-black text-primary tracking-tighter mt-1">
+                                <p className="text-xl font-extrabold text-primary tracking-tighter mt-1">
                                     {order.orderId}
                                 </p>
 

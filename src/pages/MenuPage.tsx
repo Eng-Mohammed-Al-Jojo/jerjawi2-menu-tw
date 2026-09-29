@@ -76,9 +76,9 @@ export default function MenuPage() {
 
       <main className="flex flex-col flex-1">
 
-        {/* Hero Section */}
-        <section className="relative flex flex-col items-center justify-center text-center px-6 pt-14 pb-10 md:pt-20 md:pb-14 overflow-hidden bg-(--linear-gradient(180deg,(--menu-surface),(--menu-bg))) border-b border-(--menu-border)">
-          <div className="absolute inset-x-0 bottom-0 h-20 bg-(--linear-gradient(180deg,transparent,(--menu-bg))) pointer-events-none" />
+        {/* Hero Section — mobile-first compact */}
+        <section className="relative flex flex-col items-center justify-center text-center px-4 pt-8 pb-6 sm:pt-10 sm:pb-8 overflow-hidden bg-(--linear-gradient(180deg,(--menu-surface),(--menu-bg))) border-b border-(--menu-border)">
+          <div className="absolute inset-x-0 bottom-0 h-12 bg-(--linear-gradient(180deg,transparent,(--menu-bg))) pointer-events-none" />
 
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -101,9 +101,9 @@ export default function MenuPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.6 }}
-            className="mt-5 text-center px-4"
+            className="mt-3 text-center px-4"
           >
-            <h3 className="text-xl font-bold text-(--menu-primary-800) leading-snug">
+            <h3 className="text-sm sm:text-base font-bold text-(--menu-primary-800) leading-snug">
               أهلاً بكم في عصائر و مرطبات الجرجاوي 🧃
             </h3>
 
@@ -114,7 +114,7 @@ export default function MenuPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="mt-4 flex items-center gap-2 px-4 py-2 rounded-full border border-(--menu-primary-200) bg-(--menu-primary-50) text-(--menu-primary-800) text-sm font-semibold shadow-sm"
+            className="mt-2.5 flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-(--menu-primary-200) bg-(--menu-primary-50) text-(--menu-primary-800) text-xs font-semibold shadow-sm"
           >
             <span className="w-2 h-2 rounded-full bg-(--menu-primary-500) animate-pulse" />
             {t("menu.notice.takeaway")}

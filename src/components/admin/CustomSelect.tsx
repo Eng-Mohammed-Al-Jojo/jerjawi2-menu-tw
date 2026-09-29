@@ -36,7 +36,7 @@ const CustomSelect: React.FC<Props> = ({ options, value, onChange, error, placeh
                 onClick={() => !disabled && setOpen(!open)}
                 disabled={disabled}
                 className={`
-                    w-full flex items-center justify-between px-6 py-4 rounded-2xl border transition-all duration-500
+                    w-full flex items-center justify-between px-6 py-2.5 rounded-xl border transition-all duration-500
                     bg-gray-50 outline-none shadow-soft
                     ${disabled ? "opacity-50 cursor-not-allowed border-gray-100" : "hover:border-primary/30 hover:bg-white"}
                     ${error ? "border-secondary ring-4 ring-secondary/5" : (!disabled ? "border-gray-100 focus:border-primary focus:ring-4 focus:ring-primary/5 focus:bg-white" : "")} 

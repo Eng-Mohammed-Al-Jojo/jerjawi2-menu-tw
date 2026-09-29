@@ -166,9 +166,9 @@ export default function AdminOrdersPage() {
     if (!authOk && !loading) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="bg-white p-12 rounded-[3rem] border border-gray-100 shadow-premium text-center max-w-md">
+                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="bg-white p-12 rounded-2xl border border-gray-100 shadow-premium text-center max-w-md">
                     <div className="text-7xl mb-8">🔒</div>
-                    <h2 className="text-3xl font-black text-gray-900 mb-4">{t('admin.login_title')}</h2>
+                    <h2 className="text-xl font-extrabold text-gray-900 mb-4">{t('admin.login_title')}</h2>
                     <p className="text-gray-500 font-medium mb-8">{t('admin.login_required')}</p>
                     <button onClick={() => navigate("/admin")} className="w-full py-5 bg-primary text-white rounded-2xl font-black shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all active:scale-95">
                         {t('admin.login_btn')}
@@ -179,34 +179,34 @@ export default function AdminOrdersPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 p-6 md:p-10 font-['Cairo']">
-            <div className="max-w-7xl mx-auto space-y-12">
+        <div className="min-h-screen bg-gray-50 p-3 sm:p-4 font-['Cairo']">
+            <div className="max-w-5xl mx-auto space-y-4">
 
                 {/* Header & Main Toggle */}
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
-                    <div className="flex items-center gap-6">
+                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
+                    <div className="flex items-center gap-3">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => navigate(-1)}
-                            className="w-14 h-14 flex items-center justify-center bg-white text-gray-900 rounded-2xl border border-gray-100 shadow-soft hover:shadow-premium transition-all"
+                            className="w-10 h-10 flex items-center justify-center bg-white text-gray-900 rounded-2xl border border-gray-100 shadow-soft hover:shadow-premium transition-all"
                         >
-                            {isRtl ? <FiArrowRight size={24} /> : <FiArrowRight className="rotate-180" size={24} />}
+                            {isRtl ? <FiArrowRight size={18} /> : <FiArrowRight className="rotate-180" size={18} />}
                         </motion.button>
                         <div className="text-right">
-                            <h1 className="text-4xl font-black text-gray-900 tracking-tight">{t('admin.orders_board')}</h1>
-                            <p className="text-gray-400 text-xs font-bold uppercase tracking-[0.2em] mt-2 flex items-center gap-2">
+                            <h1 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">{t('admin.orders_board')}</h1>
+                            <p className="text-gray-400 text-xs font-bold uppercase tracking-[0.2em] mt-1 flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                                 {viewMode === "history" ? t('admin.archived_orders') : viewMode === "whatsapp" ? t('admin.source_whatsapp') : t('admin.active_orders')}
                             </p>
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-4">
-                        <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <div className="flex items-center gap-2">
                             <button
                                 onClick={() => setIsApprovalsModalOpen(true)}
-                                className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl bg-white border border-gray-100 shadow-soft transition-all relative ${payments.some(p => p.status === 'pending') ? 'text-amber-500' : 'text-gray-400'}`}
+                                className={`w-9 h-9 rounded-2xl flex items-center justify-center text-base bg-white border border-gray-100 shadow-soft transition-all relative ${payments.some(p => p.status === 'pending') ? 'text-amber-500' : 'text-gray-400'}`}
                                 title={t('admin.payment_requests')}
                             >
                                 <FiBell />
@@ -219,7 +219,7 @@ export default function AdminOrdersPage() {
 
                             <button
                                 onClick={() => setIsPaymentModalOpen(true)}
-                                className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl bg-white text-gray-400 border border-gray-100 hover:text-primary hover:border-primary/30 shadow-soft transition-all"
+                                className="w-9 h-9 rounded-2xl flex items-center justify-center text-base bg-white text-gray-400 border border-gray-100 hover:text-primary hover:border-primary/30 shadow-soft transition-all"
                                 title={t('admin.payment_methods')}
                             >
                                 <FiDollarSign />
@@ -227,14 +227,14 @@ export default function AdminOrdersPage() {
 
                             <button
                                 onClick={() => setShowAnalytics(!showAnalytics)}
-                                className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl transition-all border ${showAnalytics ? 'bg-primary text-white border-primary shadow-lg' : 'bg-white text-gray-400 border-gray-100 hover:text-primary hover:border-primary/30 shadow-soft'}`}
+                                className={`w-9 h-9 rounded-2xl flex items-center justify-center text-base transition-all border ${showAnalytics ? 'bg-primary text-white border-primary shadow-lg' : 'bg-white text-gray-400 border-gray-100 hover:text-primary hover:border-primary/30 shadow-soft'}`}
                                 title="الاحصائيات"
                             >
                                 <FiBarChart2 />
                             </button>
 
 
-                            <div className="flex bg-white p-1.5 gap-1.5 rounded-2xl border border-gray-100 shadow-inner">
+                            <div className="flex bg-white p-1 gap-1.5 rounded-2xl border border-gray-100 shadow-inner">
                                 <button
                                     onClick={() => updateSettings('system', !settings.system)}
                                     className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all ${settings.system ? 'text-primary bg-primary/10' : 'text-gray-400 hover:bg-gray-50'}`}
@@ -250,15 +250,15 @@ export default function AdminOrdersPage() {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                             <button
                                 onClick={() => setIsCloseDayModalOpen(true)}
-                                className="px-6 py-2.5 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white border border-red-200 transition-all font-black text-xs uppercase tracking-widest shadow-soft flex items-center gap-2"
+                                className="px-3 py-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-600 hover:text-white border border-red-200 transition-all font-black text-[11px] uppercase tracking-widest shadow-soft flex items-center gap-2"
                             >
                                 <FiTrash2 /> إغلاق يومي وتنزيل Excel
                             </button>
 
-                            <div className="flex bg-white p-1.5 rounded-2xl border border-gray-100 shadow-inner">
+                            <div className="flex bg-white p-1 rounded-2xl border border-gray-100 shadow-inner">
                                 {[
                                     { id: "active", icon: <FiClock />, label: t('admin.active_orders') },
                                     { id: "history", icon: <FiArchive />, label: t('admin.history') || "الأرشيف" },
@@ -267,7 +267,7 @@ export default function AdminOrdersPage() {
                                     <button
                                         key={mode.id}
                                         onClick={() => setViewMode(mode.id as any)}
-                                        className={`px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${viewMode === mode.id
+                                        className={`px-3 py-2 rounded-xl text-[11px] font-bold flex items-center gap-2 transition-all ${viewMode === mode.id
                                             ? 'bg-primary text-white shadow-xl shadow-primary/20'
                                             : 'text-gray-400 hover:text-primary hover:bg-gray-50'
                                             }`}
@@ -282,7 +282,7 @@ export default function AdminOrdersPage() {
                 </div>
 
                 {/* Dashboard Stats KPI Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     <StatCard icon={<FiDollarSign />} label={t('admin.total_revenue')} value={`${stats.overall.totalRevenue}₪`} type="primary" />
                     <StatCard icon={<FiShoppingBag />} label={t('admin.total_orders')} value={stats.overall.totalOrders} type="blue" />
                     <StatCard icon={<FiCheckCircle />} label={t('admin.paid_orders')} value={stats.overall.paidCount} type="emerald" />
@@ -293,7 +293,7 @@ export default function AdminOrdersPage() {
                 <AnimatePresence>
                     {showAnalytics && (
                         <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-                            <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-soft">
+                            <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-soft">
                                 <AnalyticsSection orders={orders} />
                             </div>
                         </motion.div>
@@ -301,15 +301,15 @@ export default function AdminOrdersPage() {
                 </AnimatePresence>
 
                 {/* Advanced Filter Management */}
-                <div className="bg-white p-8 rounded-[3rem] border border-gray-100 shadow-soft space-y-8">
-                    <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center">
+                <div className="bg-white p-3 rounded-2xl border border-gray-100 shadow-soft space-y-3">
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-xl bg-primary/5 text-primary flex items-center justify-center">
                             <FiFilter size={20} />
                         </div>
-                        <h3 className="text-lg font-black text-gray-900 uppercase tracking-widest">{t('admin.advanced_filters')}</h3>
+                        <h3 className="text-sm font-black text-gray-900 uppercase tracking-widest">{t('admin.advanced_filters')}</h3>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2.5">
                         <SearchInput value={searchTerm} onChange={setSearchTerm} t={t} isRtl={isRtl} />
                         <FilterSelect
                             icon={<FiCalendar />}
@@ -352,7 +352,7 @@ export default function AdminOrdersPage() {
 
                 {/* Professional Orders Table */}
                 <>
-                    <div className="bg-white rounded-[3rem] border border-gray-100 shadow-premium overflow-hidden flex flex-col">
+                    <div className="bg-white rounded-2xl border border-gray-100 shadow-premium overflow-hidden flex flex-col">
                         <div className="overflow-x-auto custom-scrollbar">
                             <table className="w-full text-right border-collapse min-w-[1000px]">
                                 <thead>
@@ -372,7 +372,7 @@ export default function AdminOrdersPage() {
                                         <tr>
                                             <td colSpan={8} className="px-8 py-32 text-center">
                                                 <div className="flex flex-col items-center justify-center gap-6">
-                                                    <div className="w-14 h-14 rounded-full border-4 border-gray-100 border-t-primary animate-spin" />
+                                                    <div className="w-14 h-11 rounded-full border-4 border-gray-100 border-t-primary animate-spin" />
                                                     <p className="text-gray-400 font-bold tracking-[0.2em] uppercase text-xs">
                                                         {t('common.loading')}
                                                     </p>
@@ -538,11 +538,11 @@ export default function AdminOrdersPage() {
 
                     {/* Empty State */}
                     {!loading && filteredOrders.length === 0 && (
-                        <div className="py-24 text-center bg-white rounded-[3rem] border-2 border-dashed border-gray-100">
-                            <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-8">
+                        <div className="py-24 text-center bg-white rounded-2xl border-2 border-dashed border-gray-100">
+                            <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-8">
                                 <FiPackage size={40} className="text-gray-200" />
                             </div>
-                            <h3 className="text-2xl font-black text-gray-900">{t('admin.no_results_found')}</h3>
+                            <h3 className="text-lg font-extrabold text-gray-900">{t('admin.no_results_found')}</h3>
                             <p className="text-gray-400 font-bold mt-3 uppercase tracking-widest text-xs">{t('admin.no_orders')}</p>
                         </div>
                     )}
@@ -642,15 +642,15 @@ function StatCard({ icon, label, value, type }: StatCardProps) {
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`${s.bg} border ${s.border} p-8 rounded-[2.5rem] shadow-soft hover:shadow-premium transition-all duration-500 group`}
+            className={`${s.bg} border ${s.border} p-3 rounded-2xl shadow-soft hover:shadow-premium transition-all duration-500 group`}
         >
             <div className="flex items-center gap-6">
-                <div className={`w-16 h-16 rounded-3xl ${s.iconBg} ${s.iconText} flex items-center justify-center shadow-inner transition-transform group-hover:scale-110`}>
+                <div className={`w-11 h-11 rounded-xl ${s.iconBg} ${s.iconText} flex items-center justify-center shadow-inner transition-transform group-hover:scale-110`}>
                     <span className="text-2xl">{icon}</span>
                 </div>
                 <div className="flex flex-col">
                     <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-1">{label}</span>
-                    <div className={`text-3xl font-black ${s.text} tracking-tight`}>{value}</div>
+                    <div className={`text-lg font-extrabold ${s.text} tracking-tight`}>{value}</div>
                 </div>
             </div>
         </motion.div>
@@ -666,7 +666,7 @@ function SearchInput({ value, onChange, t, isRtl }: any) {
                 placeholder={t('admin.search_placeholder')}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                className={`w-full h-14 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all font-bold text-sm ${isRtl ? 'pr-14 pl-5 text-right' : 'pl-14 pr-5'}`}
+                className={`w-full h-10 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all font-bold text-[13px] ${isRtl ? 'pr-14 pl-5 text-right' : 'pl-14 pr-5'}`}
             />
         </div>
     );
@@ -681,7 +681,7 @@ function FilterSelect({ icon, value, onChange, options, isRtl }: any) {
             <select
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                className={`w-full h-14 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:bg-white focus:border-primary transition-all font-bold text-sm appearance-none relative ${isRtl ? 'pr-14 pl-6 text-right' : 'pl-14 pr-6'}`}
+                className={`w-full h-10 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:bg-white focus:border-primary transition-all font-bold text-[13px] appearance-none relative ${isRtl ? 'pr-14 pl-6 text-right' : 'pl-14 pr-6'}`}
             >
                 {options.map((opt: any) => <option key={opt.val} value={opt.val}>{opt.label}</option>)}
             </select>

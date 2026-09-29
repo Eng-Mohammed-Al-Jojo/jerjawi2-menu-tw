@@ -74,11 +74,11 @@ export default function OrderTabs({ onConfirm, firstInputRef, disableSend, order
     };
 
     // Shared input style — matches admin dashboard inputs
-    const inputCls = `w-full bg-white border border-gray-200 rounded-2xl py-3.5 px-5 text-sm font-bold text-gray-900 placeholder:text-gray-400 outline-none focus:border-primary focus:ring-4 focus:ring-primary/8 transition-all shadow-sm`;
+    const inputCls = `w-full bg-white border border-gray-200 rounded-2xl py-2.5 px-3 h-10 text-[13px] font-bold text-gray-900 placeholder:text-gray-400 outline-none focus:border-primary focus:ring-4 focus:ring-primary/8 transition-all shadow-sm`;
     const iconCls = `absolute top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none`;
 
     return (
-        <div className="space-y-5">
+        <div className="space-y-3">
             {/* Type Tabs Hidden - Always Takeaway */}
             <div className="hidden">
                 {[
@@ -168,7 +168,7 @@ export default function OrderTabs({ onConfirm, firstInputRef, disableSend, order
                     <textarea
                         placeholder={t('common.notes_optional')}
                         rows={2}
-                        className={inputCls + " resize-none " + (isRtl ? 'pr-11 pl-5' : 'pl-11 pr-5')}
+                        className={(inputCls as string).replace(' h-10', '') + " resize-none " + (isRtl ? 'pr-11 pl-5' : 'pl-11 pr-5')}
                         value={form.notes}
                         onChange={e => setForm({ ...form, notes: e.target.value })}
                     />
@@ -179,7 +179,7 @@ export default function OrderTabs({ onConfirm, firstInputRef, disableSend, order
             <button
                 onClick={submit}
                 disabled={disableSend || submitting || !isCurrentTabActive()}
-                className="w-full py-5 rounded-3xl bg-primary text-white font-black text-base shadow-xl shadow-primary/25 hover:bg-primary-600 hover:shadow-primary/40 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3"
+                className="w-full py-2.5 rounded-xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/25 hover:bg-primary-600 hover:shadow-primary/40 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3"
             >
                 {submitting ? (
                     <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />

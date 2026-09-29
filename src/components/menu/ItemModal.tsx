@@ -42,7 +42,6 @@ export default function ItemModal({ item, isOpen, onClose, orderSystem = true }:
 
   const priceOptions = getMenuPricesForType(item, selectedOrderMode);
   const selectedPriceOption = priceOptions[selectedPriceIndex] || priceOptions[0];
-  const displayedPrices = priceOptions.map((option) => option.price).join(", ");
 
   const itemName = item.nameAr || item.name || "";
   const isCurrentTabOrderingEnabled = orderSystem;
@@ -79,7 +78,7 @@ export default function ItemModal({ item, isOpen, onClose, orderSystem = true }:
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="relative w-full max-w-lg max-h-[92vh] bg-(--menu-card-bg) rounded-[2.5rem] shadow-premium overflow-hidden border border-(--menu-border) flex flex-col"
+            className="relative w-full max-w-[22rem] sm:max-w-sm max-h-[92vh] bg-(--menu-card-bg) rounded-2xl shadow-premium overflow-hidden border border-(--menu-border) flex flex-col"
           >
             {/* Close Button */}
             <button
@@ -90,7 +89,7 @@ export default function ItemModal({ item, isOpen, onClose, orderSystem = true }:
             </button>
 
             {/* Image Hero */}
-            <div className="relative h-64 sm:h-80 shrink-0">
+            <div className="relative h-40 sm:h-48 shrink-0">
               <img
                 src={item.image ? `/images/${item.image}` : "/logo.png"}
                 alt={itemName}
@@ -103,20 +102,29 @@ export default function ItemModal({ item, isOpen, onClose, orderSystem = true }:
             </div>
 
             {/* Content Body */}
-            <div className="p-8 sm:p-10 -mt-12 relative bg-(--menu-card-bg) rounded-t-[3rem] flex-1 overflow-y-auto custom-scrollbar">
-              <div className="space-y-6 pb-4">
+            <div className="p-4 sm:p-5 -mt-8 relative bg-(--menu-card-bg) rounded-t-3xl flex-1 overflow-y-auto custom-scrollbar">
+              <div className="space-y-3 pb-4">
                 {/* Price Display */}
                 <div className="flex justify-between items-start gap-4">
                   <div className="space-y-1">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-(--menu-text) tracking-tight">
+                    <h2 className="text-lg sm:text-xl font-bold text-(--menu-text) tracking-tight">
                       {itemName}
                     </h2>
                   </div>
-                  <div className="flex flex-col items-end gap-1 shrink-0">
-                    <div className="flex items-center gap-1 rounded-full bg-(--menu-surface) border border-(--menu-border) px-3 py-1">
-                      <span className="text-lg font-black text-(--menu-primary-800)">{displayedPrices || "—"}</span>
-                      <small className="text-xs opacity-70">₪</small>
-                    </div>
+                  <div className="flex flex-wrap items-center justify-end gap-1.5 shrink-0">
+                    {priceOptions.length > 0 ? (
+                      priceOptions.map((option, idx) => (
+                        <span
+                          key={`${option.type}-${option.price}-${idx}`}
+                          className="flex items-center gap-0.5 rounded-full bg-(--menu-surface) border border-(--menu-border) px-2.5 py-0.5"
+                        >
+                          <span className="text-sm font-black text-(--menu-primary-800)">{option.price}</span>
+                          <small className="text-[10px] opacity-70">₪</small>
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-lg font-black text-(--menu-primary-800)">—</span>
+                    )}
                   </div>
                 </div>
 
@@ -133,7 +141,7 @@ export default function ItemModal({ item, isOpen, onClose, orderSystem = true }:
                         <button
                           key={`${option.type}-${option.price}-${idx}`}
                           onClick={() => setSelectedPriceIndex(idx)}
-                          className={`py-3 px-4 rounded-2xl border font-black transition-all ${selectedPriceIndex === idx
+                          className={`py-2 px-3 rounded-xl border text-sm font-black transition-all ${selectedPriceIndex === idx
                             ? "bg-(--menu-primary) text-(--menu-card-elevated) border-(--menu-primary) shadow-soft)"
                             : "bg-(--menu-surface) text-(--menu-text) border-(--menu-border)"
                             }`}
@@ -154,7 +162,7 @@ export default function ItemModal({ item, isOpen, onClose, orderSystem = true }:
                     <motion.button
                       whileTap={{ scale: 0.9 }}
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="w-11 h-11 rounded-xl bg-(--menu-card-elevated) text-(--menu-text) flex items-center justify-center shadow-sm hover:text-(--menu-accent-700) transition-colors"
+                      className="w-9 h-9 rounded-xl bg-(--menu-card-elevated) text-(--menu-text) flex items-center justify-center shadow-sm hover:text-(--menu-accent-700) transition-colors"
                     >
                       <FiMinus size={18} />
                     </motion.button>
@@ -164,7 +172,7 @@ export default function ItemModal({ item, isOpen, onClose, orderSystem = true }:
                     <motion.button
                       whileTap={{ scale: 0.9 }}
                       onClick={() => setQuantity(quantity + 1)}
-                      className="w-11 h-11 rounded-xl bg-(--menu-card-elevated) text-(--menu-text) flex items-center justify-center shadow-sm hover:text-(--menu-primary-700) transition-colors"
+                      className="w-9 h-9 rounded-xl bg-(--menu-card-elevated) text-(--menu-text) flex items-center justify-center shadow-sm hover:text-(--menu-primary-700) transition-colors"
                     >
                       <FiPlus size={18} />
                     </motion.button>
@@ -175,12 +183,12 @@ export default function ItemModal({ item, isOpen, onClose, orderSystem = true }:
 
             {/* Fixed Footer */}
             {orderSystem && (
-              <div className="p-6 sm:p-8 bg-(--menu-card-bg) border-t border-(--menu-border) shrink-0">
+              <div className="p-3 sm:p-4 bg-(--menu-card-bg) border-t border-(--menu-border) shrink-0">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleAdd}
-                  className="w-full min-h-11 py-5 rounded-full font-bold shadow-xl flex items-center justify-center gap-3 text-lg transition-all bg-(--menu-primary) text-(--menu-card-elevated) hover:bg-(--menu-primary-600)"
+                  className="w-full min-h-11 py-3 rounded-full font-bold shadow-xl flex items-center justify-center gap-3 text-[15px] transition-all bg-(--menu-primary) text-(--menu-card-elevated) hover:bg-(--menu-primary-600)"
                 >
                   <FiShoppingCart size={22} />
                   <span>{t("common.add_to_order") || "إضافة للطلب"}</span>

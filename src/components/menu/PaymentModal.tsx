@@ -37,7 +37,7 @@ export default function PaymentModal({ isOpen, onClose, methods, loading }: Paym
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="relative w-full max-w-xl rounded-4xl bg-(--menu-bg) border border-(--menu-border) shadow-premium p-6 md:p-8 overflow-hidden"
+            className="relative w-full max-w-[22rem] sm:max-w-sm rounded-2xl bg-(--menu-bg) border border-(--menu-border) shadow-premium p-4 sm:p-5 overflow-hidden"
             dir="rtl"
           >
             <div className="flex items-center justify-between gap-4 border-b border-(--menu-border) pb-4">
@@ -57,20 +57,20 @@ export default function PaymentModal({ isOpen, onClose, methods, loading }: Paym
               </button>
             </div>
 
-            <div className="max-h-[62vh] overflow-y-auto custom-scrollbar py-4 space-y-3">
+            <div className="max-h-[62vh] overflow-y-auto custom-scrollbar py-3 space-y-3">
               {loading ? (
                 [0, 1].map((item) => (
                   <div key={item} className="h-24 rounded-2xl bg-(--menu-card-bg) border border-(--menu-border) animate-pulse" />
                 ))
               ) : activePaymentMethods.length === 0 ? (
-                <div className="py-10 text-center rounded-3xl border border-dashed border-(--menu-border) bg-(--menu-card-bg)/50">
+                <div className="py-10 text-center rounded-xl border border-dashed border-(--menu-border) bg-(--menu-card-bg)/50">
                   <Wallet className="mx-auto text-(--menu-text-muted) mb-3" size={28} />
                   <p className="text-sm font-bold text-(--menu-text-muted)">{t('footer.no_active_payment_methods')}</p>
                 </div>
               ) : (
                 activePaymentMethods.map((method) => {
                   return (
-                    <div key={method.id} className="rounded-3xl bg-(--menu-card-bg) border border-(--menu-border) px-4 py-4 md:px-6 md:py-5 shadow-sm">
+                    <div key={method.id} className="rounded-xl bg-(--menu-card-bg) border border-(--menu-border) px-3 py-3 shadow-sm">
                       <div className="flex flex-col gap-4">
                         {/* Header Info */}
                         <div className="flex items-start justify-between gap-4">

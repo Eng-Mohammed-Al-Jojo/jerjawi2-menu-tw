@@ -212,3 +212,113 @@ body {
 .swiper-button-prev:after {
   font-size: 18px !important;
 }
+
+/* ==========================================================
+   MOBILE-FIRST COMPACT SYSTEM
+   - Admin / login density, smaller modals, hero & categories
+   ========================================================== */
+:root {
+  --admin-pad: 0.875rem;
+  --admin-radius: 1rem;
+  --modal-pad: 1rem;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Base: keep body compact on small screens */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+}
+
+/* ---- Admin density: tighten oversized paddings / radii on mobile ---- */
+@media (max-width: 640px) {
+  /* Any huge rounded card in admin becomes 1rem */
+  .rounded-\[2\.5rem\],
+  .rounded-\[3rem\] {
+    border-radius: 1rem !important;
+  }
+  .rounded-4xl {
+    border-radius: 1rem !important;
+  }
+  /* Oversized section paddings */
+  .p-10, .p-8 {
+    padding: 1rem !important;
+  }
+  .p-6 {
+    padding: 0.875rem !important;
+  }
+  .px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  /* Tall buttons / inputs */
+  .h-14, .h-16 {
+    height: 2.625rem !important;
+    min-height: 2.625rem !important;
+  }
+  .py-5 {
+    padding-top: 0.625rem !important;
+    padding-bottom: 0.625rem !important;
+  }
+  /* Oversized titles */
+  .text-3xl {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
+  }
+  .text-2xl {
+    font-size: 1.125rem !important;
+    line-height: 1.4 !important;
+  }
+  .text-xl {
+    font-size: 1rem !important;
+  }
+  /* Icon squares */
+  .w-24.h-24 {
+    width: 3rem !important;
+    height: 3rem !important;
+    font-size: 1.25rem !important;
+  }
+  .w-16.h-16 {
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+  }
+  /* Gaps */
+  .gap-8 {
+    gap: 0.75rem !important;
+  }
+  .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: 0.875rem !important;
+  }
+  .space-y-12 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem !important;
+  }
+}
+
+/* ---- All modals: compact on mobile, capped on desktop ---- */
+@media (max-width: 640px) {
+  .fixed.inset-0.z-100,
+  .fixed.inset-0.z-999,
+  [class*="z-100"] {
+    padding: 0.75rem !important;
+  }
+}
+
+/* Clamp modal widths globally for better mobile-first feel */
+.modal-compact {
+  width: 100%;
+  max-width: 24rem !important;
+  border-radius: 1rem !important;
+  max-height: 88vh !important;
+}
+
+@media (min-width: 641px) {
+  .modal-compact {
+    max-width: 26rem !important;
+  }
+}

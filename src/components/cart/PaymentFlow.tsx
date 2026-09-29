@@ -83,11 +83,11 @@ export default function PaymentFlow({
     const stepIdx = STEPS.indexOf(currentStep);
 
     // Shared styles — match admin dashboard
-    const inputCls = `w-full bg-white border border-gray-200 rounded-2xl py-3.5 px-5 text-sm font-bold text-gray-900 placeholder:text-gray-400 outline-none focus:border-primary focus:ring-4 focus:ring-primary/8 transition-all shadow-sm`;
+    const inputCls = `w-full bg-white border border-gray-200 rounded-2xl py-2.5 px-3 h-10 text-[13px] font-bold text-gray-900 placeholder:text-gray-400 outline-none focus:border-primary focus:ring-4 focus:ring-primary/8 transition-all shadow-sm`;
     const inputWithIcon = (rtl: boolean) => inputCls + (rtl ? ' pr-11 pl-5' : ' pl-11 pr-5');
 
     return (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-3">
 
             {/* Step Indicators */}
             {currentStep !== "RESULT" && (
@@ -116,9 +116,9 @@ export default function PaymentFlow({
 
                 {/* ── SELECT ── */}
                 {currentStep === "SELECT" && (
-                    <motion.div key="select" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-5">
+                    <motion.div key="select" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-3">
                         <div className="text-center mb-4">
-                            <h3 className="text-2xl font-black text-gray-900 tracking-tight">{t('common.payment_method')}</h3>
+                            <h3 className="text-lg font-extrabold text-gray-900 tracking-tight">{t('common.payment_method')}</h3>
                             <p className="text-sm font-bold text-gray-400 mt-1">{t('common.payment_desc')}</p>
                         </div>
 
@@ -127,9 +127,9 @@ export default function PaymentFlow({
                                 <button
                                     key={method.id}
                                     onClick={() => handleSelectMethod(method)}
-                                    className="relative p-6 rounded-4xl border-2 border-gray-100 bg-white hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center gap-4 group shadow-soft hover:shadow-premium active:scale-95"
+                                    className="relative p-3 rounded-2xl border-2 border-gray-100 bg-white hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center gap-4 group shadow-soft hover:shadow-premium active:scale-95"
                                 >
-                                    <div className="w-20 h-20 rounded-3xl overflow-hidden bg-white shadow-soft flex items-center justify-center border border-gray-50 shrink-0 group-hover:scale-105 transition-transform duration-500">
+                                    <div className="w-14 h-14 rounded-xl overflow-hidden bg-white shadow-soft flex items-center justify-center border border-gray-50 shrink-0 group-hover:scale-105 transition-transform duration-500">
                                         {method.imageUrl ? (
                                             <img src={method.imageUrl} alt="" className="w-full h-full object-contain p-2" />
                                         ) : (
@@ -148,7 +148,7 @@ export default function PaymentFlow({
 
                 {/* ── FORM ── */}
                 {currentStep === "FORM" && selectedMethod && (
-                    <motion.div key="form" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-5">
+                    <motion.div key="form" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-3">
                         <div className="flex items-center gap-3">
                             <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-gray-50 border border-gray-200 text-gray-400 hover:text-primary hover:border-primary/30 flex items-center justify-center transition-all">
                                 {isRtl ? <FiArrowRight size={16} /> : <FiArrowLeft size={16} />}
@@ -161,7 +161,7 @@ export default function PaymentFlow({
 
                         {/* Account Info Card */}
                         {selectedMethod.details && (
-                            <div className="bg-primary/5 border border-primary/10 rounded-3xl p-5 space-y-4">
+                            <div className="bg-primary/5 border border-primary/10 rounded-xl p-3 space-y-3">
                                 <div className="flex items-center gap-2 text-primary text-[10px] font-black uppercase tracking-[0.2em]">
                                     <FiInfo size={14} />
                                     <span>{t('admin.account_details')}</span>
@@ -198,14 +198,14 @@ export default function PaymentFlow({
                             </div>
                             <div className="relative">
                                 <FiMessageSquare className={`absolute ${isRtl ? 'right-5' : 'left-5'} top-5 text-gray-400`} size={18} />
-                                <textarea placeholder={t('common.notes_optional')} rows={3} className={inputWithIcon(isRtl) + " resize-none pt-4"} value={formData.notes} onChange={e => setFormData({ ...formData, notes: e.target.value })} />
+                                <textarea placeholder={t('common.notes_optional')} rows={3} className={inputWithIcon(isRtl).replace(' h-10', '') + " resize-none pt-4"} value={formData.notes} onChange={e => setFormData({ ...formData, notes: e.target.value })} />
                             </div>
                         </div>
 
                         <button
                             onClick={handleNext}
                             disabled={!formData.senderAccountName || !formData.senderAccountNumber || !formData.senderBankOrWallet}
-                            className="w-full py-5 rounded-3xl bg-primary text-white font-black text-base shadow-xl shadow-primary/25 hover:bg-primary-600 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-40 disabled:hover:scale-100"
+                            className="w-full py-2.5 rounded-xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/25 hover:bg-primary-600 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-40 disabled:hover:scale-100"
                         >
                             {t('common.complete_order')}
                         </button>
@@ -214,7 +214,7 @@ export default function PaymentFlow({
 
                 {/* ── CONFIRM ── */}
                 {currentStep === "CONFIRM" && selectedMethod && (
-                    <motion.div key="confirm" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-5">
+                    <motion.div key="confirm" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-3">
                         <div className="flex items-center gap-3">
                             <button onClick={handleBack} className="w-9 h-9 rounded-xl bg-gray-50 border border-gray-200 text-gray-400 hover:text-primary hover:border-primary/30 flex items-center justify-center transition-all">
                                 {isRtl ? <FiArrowRight size={16} /> : <FiArrowLeft size={16} />}
@@ -226,7 +226,7 @@ export default function PaymentFlow({
                         </div>
 
                         {/* Order Summary */}
-                        <div className="bg-white border border-gray-100 rounded-3xl p-5 space-y-3 shadow-sm">
+                        <div className="bg-white border border-gray-100 rounded-xl p-3 space-y-3 shadow-sm">
                             <div className="flex items-center gap-2 text-gray-500 text-xs font-black uppercase tracking-widest">
                                 <FiShoppingCart size={13} className="text-primary" />
                                 {t('common.order_summary')}
@@ -242,12 +242,12 @@ export default function PaymentFlow({
                             </div>
                             <div className="pt-3 border-t border-gray-100 flex justify-between items-center">
                                 <span className="text-xs font-black text-gray-500">{t('common.total')}</span>
-                                <span className="text-2xl font-black text-primary">{totalAmount}₪</span>
+                                <span className="text-lg font-extrabold text-primary">{totalAmount}₪</span>
                             </div>
                         </div>
 
                         {/* Method + Details */}
-                        <div className="bg-white border border-gray-100 rounded-3xl p-5 space-y-4 shadow-sm">
+                        <div className="bg-white border border-gray-100 rounded-xl p-3 space-y-3 shadow-sm">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-xl bg-white border border-gray-100 shadow flex items-center justify-center p-1.5">
                                     {selectedMethod.imageUrl ? (
@@ -276,7 +276,7 @@ export default function PaymentFlow({
                         <button
                             onClick={() => onSubmit(formData)}
                             disabled={submitting}
-                            className="w-full py-5 rounded-3xl bg-primary text-white font-black text-base shadow-xl shadow-primary/25 hover:bg-primary-600 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-70 flex items-center justify-center gap-3"
+                            className="w-full py-2.5 rounded-xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/25 hover:bg-primary-600 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-70 flex items-center justify-center gap-3"
                         >
                             {submitting ? (
                                 <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
@@ -289,10 +289,10 @@ export default function PaymentFlow({
 
                 {/* ── RESULT ── */}
                 {currentStep === "RESULT" && paymentRecord && (
-                    <motion.div key="result" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="flex flex-col items-center text-center py-6 space-y-7">
+                    <motion.div key="result" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="flex flex-col items-center text-center py-6 space-y-3">
 
                         {/* Status icon */}
-                        <div className={`w-28 h-28 rounded-[2.5rem] flex items-center justify-center text-5xl shadow-2xl border-4 ${paymentRecord.status === "pending"
+                        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shadow-2xl border-4 ${paymentRecord.status === "pending"
                             ? "bg-amber-50 text-amber-500 border-amber-100 animate-pulse"
                             : paymentRecord.status === "approved"
                                 ? "bg-emerald-50 text-emerald-600 border-emerald-100"
@@ -304,7 +304,7 @@ export default function PaymentFlow({
                         </div>
 
                         <div>
-                            <h4 className="text-2xl font-black text-gray-900">
+                            <h4 className="text-lg font-extrabold text-gray-900">
                                 {paymentRecord.status === "pending" ? t('common.under_review') :
                                     paymentRecord.status === "approved" ? t('common.payment_approved') : t('common.payment_rejected')}
                             </h4>
@@ -332,7 +332,7 @@ export default function PaymentFlow({
                             {paymentRecord.status !== "pending" && (
                                 <button
                                     onClick={onTrackOrder}
-                                    className="w-full py-5 rounded-3xl bg-primary text-white font-black text-base shadow-xl shadow-primary/25 hover:bg-primary-600 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3"
+                                    className="w-full py-2.5 rounded-xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/25 hover:bg-primary-600 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3"
                                 >
                                     <FiShoppingCart size={20} />
                                     {t('common.track_order')}

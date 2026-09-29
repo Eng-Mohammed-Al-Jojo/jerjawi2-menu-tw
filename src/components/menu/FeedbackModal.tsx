@@ -92,28 +92,28 @@ export default function FeedbackModal({ show, onClose }: Props) {
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="relative bg-(--bg-card)/80 backdrop-blur-2xl w-full max-w-md p-8 rounded-[2.5rem] border border-(--border-color) shadow-2xl overflow-y-auto max-h-[90vh] z-10"
+                        className="relative bg-(--bg-card)/80 backdrop-blur-2xl w-full max-w-[22rem] sm:max-w-sm p-4 sm:p-5 rounded-2xl border border-(--border-color) shadow-2xl overflow-y-auto max-h-[88vh] z-10"
                     >
-                        <button onClick={onClose} className="absolute top-6 left-6 w-10 h-10 flex items-center justify-center rounded-2xl bg-(--bg-main) text-(--text-muted) hover:text-red-500 transition-all border border-(--border-color)">
-                            <FiX />
+                        <button onClick={onClose} className="absolute top-3 left-3 w-8 h-8 flex items-center justify-center rounded-xl bg-(--bg-main) text-(--text-muted) hover:text-red-500 transition-all border border-(--border-color)">
+                            <FiX size={15} />
                         </button>
 
-                        <div className="flex flex-col items-center mb-8">
-                            <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-3xl mb-4 shadow-inner">
+                        <div className="flex flex-col items-center mb-3">
+                            <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-lg mb-2.5 shadow-inner">
                                 <FiMessageSquare />
                             </div>
-                            <h2 className="text-2xl font-black text-(--text-main) text-center">{t('common.feedback_title')}</h2>
-                            <p className="text-sm font-bold text-(--text-muted) text-center mt-1 uppercase tracking-widest opacity-60">{t('common.feedback_desc')}</p>
+                            <h2 className="text-base font-extrabold text-(--text-main) text-center">{t('common.feedback_title')}</h2>
+                            <p className="text-[11px] font-bold text-(--text-muted) text-center mt-1 uppercase tracking-widest opacity-60">{t('common.feedback_desc')}</p>
                         </div>
 
-                        <div className="space-y-4">
+                        <div className="space-y-3">
                             <div className="relative">
                                 <input
                                     type="text"
                                     placeholder={t('common.name')}
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    className="w-full px-5 py-3.5 rounded-2xl bg-(--bg-main)/50 text-(--text-main) border border-(--border-color) focus:border-primary focus:ring-4 focus:ring-primary/5 outline-none transition-all font-bold placeholder:opacity-50"
+                                    className="w-full h-11 px-3 rounded-xl bg-(--bg-main)/50 text-(--text-main) border border-(--border-color) focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none transition-all font-bold text-[13px] placeholder:opacity-50"
                                 />
                             </div>
                             <div className="relative" dir="ltr">
@@ -123,17 +123,17 @@ export default function FeedbackModal({ show, onClose }: Props) {
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                     dir="ltr"
-                                    className="w-full px-5 py-3.5 rounded-2xl 
+                                    className="w-full h-11 px-3 rounded-xl 
                                                 bg-(--bg-main)/50 text-(--text-main) 
                                                 border border-(--border-color) 
-                                                focus:border-primary focus:ring-4 focus:ring-primary/5 
-                                                outline-none transition-all font-bold 
+                                                focus:border-primary focus:ring-2 focus:ring-primary/10 
+                                                outline-none transition-all font-bold text-[13px]
                                                 placeholder:opacity-50 text-right"
                                 />
                             </div>
 
                             {/* Stars Rating */}
-                            <div className="flex justify-center gap-2 py-4">
+                            <div className="flex justify-center gap-1.5 py-2">
                                 {[1, 2, 3, 4, 5].map((star) => (
                                     <button
                                         key={star}
@@ -144,7 +144,7 @@ export default function FeedbackModal({ show, onClose }: Props) {
                                         className="relative p-1 transition-transform hover:scale-125 active:scale-95"
                                     >
                                         <FiStar
-                                            size={32}
+                                            size={22}
                                             className={`transition-colors duration-300 ${star <= (hoverRating || rating) ? 'text-amber-400 fill-amber-400 drop-shadow-lg' : 'text-(--text-muted) opacity-20'}`}
                                         />
                                     </button>
@@ -155,12 +155,12 @@ export default function FeedbackModal({ show, onClose }: Props) {
                                 placeholder={t('common.feedback_placeholder')}
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                className="w-full px-5 py-4 rounded-2xl bg-(--bg-main)/50 text-(--text-main) border border-(--border-color) focus:border-primary focus:ring-4 focus:ring-primary/5 outline-none transition-all font-bold resize-none h-32 placeholder:opacity-50"
+                                className="w-full px-5 py-2.5 rounded-xl bg-(--bg-main)/50 text-(--text-main) border border-(--border-color) focus:border-primary focus:ring-4 focus:ring-primary/5 outline-none transition-all font-bold resize-none h-24 placeholder:opacity-50"
                             />
 
                             <button
                                 onClick={handleSend}
-                                className="w-full py-4 rounded-2xl bg-primary text-white font-black text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
+                                className="w-full py-2.5 rounded-xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
                             >
                                 <FiSend />
                                 {t('common.send_feedback')}
@@ -175,7 +175,7 @@ export default function FeedbackModal({ show, onClose }: Props) {
                                 initial={{ opacity: 0, y: 30, x: "-50%" }}
                                 animate={{ opacity: 1, y: 0, x: "-50%" }}
                                 exit={{ opacity: 0, y: 30, x: "-50%" }}
-                                className="fixed top-10 left-1/2 z-110 bg-primary text-white px-8 py-4 rounded-2xl font-black shadow-2xl border border-white/20 backdrop-blur-md"
+                                className="fixed top-10 left-1/2 z-110 bg-primary text-white px-8 py-2.5 rounded-xl font-black shadow-2xl border border-white/20 backdrop-blur-md"
                             >
                                 {toast}
                             </motion.div>

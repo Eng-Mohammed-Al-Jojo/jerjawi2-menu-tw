@@ -25,7 +25,7 @@ export default function AnalyticsSection({ orders }: Props) {
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-soft flex flex-col gap-8 group hover:shadow-premium transition-all"
+                className="bg-white p-4 rounded-2xl border border-gray-100 shadow-soft flex flex-col gap-8 group hover:shadow-premium transition-all"
             >
                 <div className="flex justify-between items-center">
                     <h3 className="text-sm font-black text-gray-900 uppercase tracking-[0.2em]">{t('admin.sales_trend') || "اتجاه المبيعات (7 أيام)"}</h3>
@@ -63,7 +63,7 @@ export default function AnalyticsSection({ orders }: Props) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-soft flex flex-col gap-8 group hover:shadow-premium transition-all"
+                className="bg-white p-4 rounded-2xl border border-gray-100 shadow-soft flex flex-col gap-8 group hover:shadow-premium transition-all"
             >
                 <div className="flex justify-between items-center">
                     <h3 className="text-sm font-black text-gray-900 uppercase tracking-[0.2em]">{t('admin.peak_hours') || "ساعات الذروة اليوم"}</h3>
@@ -91,7 +91,7 @@ export default function AnalyticsSection({ orders }: Props) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-soft flex flex-col items-center gap-8 group hover:shadow-premium transition-all lg:col-span-2"
+                className="bg-white p-4 rounded-2xl border border-gray-100 shadow-soft flex flex-col items-center gap-8 group hover:shadow-premium transition-all lg:col-span-2"
             >
                 <div className="w-full flex justify-between items-center">
                     <h3 className="text-sm font-black text-gray-900 uppercase tracking-[0.2em]">{t('admin.order_distribution') || "توزيع الطلبات"}</h3>
@@ -130,7 +130,7 @@ export default function AnalyticsSection({ orders }: Props) {
                                     <div className="w-4 h-4 rounded-full shadow-sm" style={{ backgroundColor: COLORS[index % COLORS.length] }} />
                                     <span className="text-xs font-black text-gray-400 uppercase tracking-widest">{entry.name}</span>
                                 </div>
-                                <div className="text-2xl font-black text-gray-900">{entry.value}</div>
+                                <div className="text-lg font-extrabold text-gray-900">{entry.value}</div>
                             </div>
                         ))}
                     </div>

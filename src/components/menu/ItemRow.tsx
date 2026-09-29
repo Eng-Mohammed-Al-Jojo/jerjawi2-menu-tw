@@ -46,20 +46,20 @@ const ItemRow = React.memo(({ item, orderSystem, onClick }: Props) => {
         transition={{ duration: 0.4, ease: "easeOut" }}
         viewport={{ once: true, margin: "50px" }}
         className={`
-          relative flex items-center justify-between w-full rounded-3xl border border-(--menu-border)
-          h-[100px] pr-28 pl-2 bg-(--menu-card-elevated) mb-1 mr-1
+          relative flex items-center justify-between w-full rounded-xl border border-(--menu-border)
+          min-h-[76px] py-2 pr-24 pl-2 bg-(--menu-card-elevated) mb-1 mr-1
           transition-all duration-300 group shadow-soft
-          ${unavailable ? "opacity-60 grayscale mt-4 mb-4" : canOrder ? "hover:bg-(--menu-surface) cursor-pointer" : ""}
+          ${unavailable ? "opacity-60 grayscale mt-2 mb-2" : canOrder ? "hover:bg-(--menu-surface) cursor-pointer" : ""}
         `}
         onClick={handleOrderClick}
       >
         {/* IMAGE */}
-        <div className="absolute right-12 translate-x-1/2 w-26 h-26 z-10">
+        <div className="absolute right-10 translate-x-1/2 w-20 h-20 z-10">
           <img
             src={item.image ? `/images/${item.image}` : "/logo.png"}
             alt={itemName}
             loading="lazy"
-            className="w-full h-full rounded-3xl object-cover shadow-md border-2 border-(--menu-primary) transition-transform duration-500 group-hover:scale-105 bg-(--menu-surface)"
+            className="w-full h-full rounded-xl object-cover shadow border border-(--menu-primary) transition-transform duration-500 group-hover:scale-105 bg-(--menu-surface)"
             onError={(e) => { (e.target as HTMLImageElement).src = "/logo.png"; }}
           />
           {(item.star || (item as any).isFeatured) && !unavailable && (
@@ -71,10 +71,10 @@ const ItemRow = React.memo(({ item, orderSystem, onClick }: Props) => {
 
         {/* CONTENT */}
         <div className="flex-1 text-right overflow-hidden">
-          <h3 className="text-lg md:text-xl lg:text-xl font-bold text-(--menu-text) mb-1 leading-tight truncate">
+          <h3 className="text-[15px] sm:text-base font-bold text-(--menu-text) mb-0.5 leading-tight truncate">
             {itemName}
           </h3>
-          <p className="text-[11px] md:text-xs lg:text-sm text-(--menu-text-muted) line-clamp-2 leading-relaxed font-medium">
+          <p className="text-[11px] text-(--menu-text-muted) line-clamp-1 leading-relaxed font-medium">
             {description}
           </p>
         </div>
@@ -83,11 +83,18 @@ const ItemRow = React.memo(({ item, orderSystem, onClick }: Props) => {
         <div className="flex flex-col items-end gap-1 shrink-0 min-w-[90px] pl-2">
           <div className="flex flex-col items-end gap-1">
             {priceOptions.length > 0 ? (
-              <div className="flex items-center gap-1 rounded-full bg-(--menu-surface) border border-(--menu-border) px-2.5 py-1">
-                <span className="text-(--menu-primary-800) font-black text-sm leading-none">
-                  {priceOptions.map((option) => option.price).join(", ")}
-                </span>
-                <span className="text-[10px] font-bold text-(--menu-primary-700)">₪</span>
+              <div className="flex flex-wrap items-center justify-end gap-1.5">
+                {priceOptions.map((option, idx) => (
+                  <span
+                    key={`${option.type}-${option.price}-${idx}`}
+                    className="flex items-center gap-0.5 rounded-full bg-(--menu-surface) border border-(--menu-border) px-2 py-0.5"
+                  >
+                    <span className="text-(--menu-primary-800) font-black text-xs leading-none">
+                      {option.price}
+                    </span>
+                    <span className="text-[9px] font-bold text-(--menu-primary-700)">₪</span>
+                  </span>
+                ))}
               </div>
             ) : (
               <span className="text-[10px] font-bold text-(--menu-text-muted)">—</span>

@@ -29,25 +29,25 @@ export default function DeleteConfirmationModal({ isOpen, onClose, onConfirm, ti
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="relative w-full max-w-md bg-white rounded-[3rem] border border-gray-100 shadow-premium overflow-hidden z-10 p-10 text-center"
+                        className="relative w-full max-w-[22rem] sm:max-w-sm bg-white rounded-2xl border border-gray-100 shadow-premium overflow-hidden z-10 p-4 sm:p-5 text-center"
                     >
                         {/* Warning Icon */}
-                        <div className="w-24 h-24 bg-secondary/5 text-secondary rounded-4xl flex items-center justify-center mx-auto mb-8 text-4xl shadow-inner border border-secondary/10">
+                        <div className="w-9 h-9 bg-secondary/5 text-secondary rounded-2xl flex items-center justify-center mx-auto mb-3 text-xl shadow-inner border border-secondary/10">
                             <FiAlertTriangle />
                         </div>
 
                         {/* Text */}
-                        <h3 className="text-3xl font-black text-gray-900 mb-4 tracking-tight">
+                        <h3 className="text-xl font-extrabold text-gray-900 mb-4 tracking-tight">
                             {title}
                         </h3>
 
                         {details && (
-                            <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 mb-8 shadow-inner">
+                            <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 mb-3 shadow-inner">
                                 <span className="text-xs font-black text-primary tracking-[0.2em] uppercase">{details}</span>
                             </div>
                         )}
 
-                        <div className="bg-secondary/5 p-5 rounded-2xl border border-secondary/10 mb-10">
+                        <div className="bg-secondary/5 p-5 rounded-2xl border border-secondary/10 mb-4">
                             <p className="text-[11px] font-black text-secondary uppercase tracking-widest leading-relaxed">
                                 ⚠️ {t('common.confirm_delete_extra') || "هذا الإجراء لا يمكن التراجع عنه وسيتم حذفه من القاعدة نهائياً"}
                             </p>
@@ -60,14 +60,14 @@ export default function DeleteConfirmationModal({ isOpen, onClose, onConfirm, ti
                                     onConfirm();
                                     onClose();
                                 }}
-                                className="w-full py-5 bg-secondary text-white rounded-2xl font-black text-sm hover:bg-secondary/90 shadow-xl shadow-secondary/20 transition-all active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest"
+                                className="w-full py-2.5 bg-secondary text-white rounded-2xl font-black text-sm hover:bg-secondary/90 shadow-xl shadow-secondary/20 transition-all active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest"
                             >
                                 <FiCheck size={20} />
                                 {t('common.delete') || "تأكيد الحذف"}
                             </button>
                             <button
                                 onClick={onClose}
-                                className="w-full py-5 bg-gray-50 text-gray-400 border border-gray-100 rounded-2xl font-black text-sm hover:bg-gray-100 transition-all active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest"
+                                className="w-full py-2.5 bg-gray-50 text-gray-400 border border-gray-100 rounded-2xl font-black text-sm hover:bg-gray-100 transition-all active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest"
                             >
                                 <FiX size={20} />
                                 {t('common.cancel') || "إلغاء"}

@@ -100,29 +100,29 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                         animate={{ x: 0 }}
                         exit={{ x: isRtl ? "-100%" : "100%" }}
                         transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                        className={`relative w-full max-w-lg bg-white h-full shadow-premium z-10 flex flex-col ${isRtl ? 'border-r' : 'border-l'} border-gray-100`}
+                        className={`relative w-full max-w-[22rem] sm:max-w-sm bg-white h-full shadow-premium z-10 flex flex-col ${isRtl ? 'border-r' : 'border-l'} border-gray-100`}
                     >
                         {/* Header */}
-                        <div className="p-8 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+                        <div className="p-3 sm:p-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
                             <div>
                                 <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em] bg-primary/5 px-3 py-1 rounded-lg border border-primary/10">
                                     {order.orderId}
                                 </span>
-                                <h2 className="text-2xl font-black text-gray-900 mt-2">{t('admin.order_details') || "تفاصيل الطلب"}</h2>
+                                <h2 className="text-lg font-extrabold text-gray-900 mt-2">{t('admin.order_details') || "تفاصيل الطلب"}</h2>
                             </div>
                             <button
                                 onClick={onClose}
-                                className="w-12 h-12 rounded-2xl bg-white text-gray-400 flex items-center justify-center hover:bg-secondary/10 hover:text-secondary transition-all border border-gray-100 shadow-soft"
+                                className="w-9 h-9 rounded-2xl bg-white text-gray-400 flex items-center justify-center hover:bg-secondary/10 hover:text-secondary transition-all border border-gray-100 shadow-soft"
                             >
                                 <FiX size={24} />
                             </button>
                         </div>
 
                         {/* Content Scrollable */}
-                        <div className="flex-1 overflow-y-auto custom-scrollbar p-8 space-y-10">
+                        <div className="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-4">
 
                             {/* Order Progress Control Center */}
-                            <section className="space-y-6">
+                            <section className="space-y-3">
                                 <div className="flex justify-between items-center">
                                     <h3 className="text-xs font-black uppercase tracking-widest text-gray-400">{t('admin.status_progress') || "تتبع وتحديث الحالة"}</h3>
                                     {order.archived && (
@@ -132,9 +132,9 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
 
                                 {/* Simplified Status Visualization */}
                                 <div className="space-y-4">
-                                    <div className="flex items-center justify-between p-6 bg-gray-50 rounded-3xl border border-gray-100">
+                                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100">
                                         <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shadow-inner">
+                                            <div className="w-9 h-9 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shadow-inner">
                                                 <FiClock size={22} />
                                             </div>
                                             <div>
@@ -158,7 +158,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                                     {order.status === "pending" && (
                                         <button
                                             onClick={handleConfirmNotify}
-                                            className="w-full py-5 bg-primary text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
+                                            className="w-full py-2.5 text-sm bg-primary text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
                                         >
                                             <FiCheck size={20} />
                                             {t('admin.mark_confirmed') || "تأكيد الطلب وإبلاغ العميل"}
@@ -168,7 +168,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                                     {order.status === "confirmed" && (
                                         <button
                                             onClick={() => updateStatus("preparing")}
-                                            className="w-full py-5 bg-indigo-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-indigo-600/20 hover:scale-[1.02] active:scale-95 transition-all"
+                                            className="w-full py-2.5 text-sm bg-indigo-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-indigo-600/20 hover:scale-[1.02] active:scale-95 transition-all"
                                         >
                                             <FiPackage size={20} />
                                             {t('admin.mark_preparing') || "بدء تحضير الطلب"}
@@ -177,7 +177,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                                     {order.status === "preparing" && (
                                         <button
                                             onClick={handleReadyNotify}
-                                            className="w-full py-5 bg-purple-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-purple-600/20 hover:scale-[1.02] active:scale-95 transition-all"
+                                            className="w-full py-2.5 text-sm bg-purple-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-purple-600/20 hover:scale-[1.02] active:scale-95 transition-all"
                                         >
                                             <FiBell size={20} />
                                             {t('admin.mark_ready') || "إخطار العميل بجاهزية الطلب"}
@@ -187,7 +187,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                                     {(order.status === "ready" || order.status === "confirmed" || order.status === "preparing") && (
                                         <button
                                             onClick={() => updateStatus("delivered")}
-                                            className="w-full py-5 bg-emerald-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-emerald-600/20 hover:scale-[1.02] active:scale-95 transition-all"
+                                            className="w-full py-2.5 text-sm bg-emerald-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-emerald-600/20 hover:scale-[1.02] active:scale-95 transition-all"
                                         >
                                             <FiTruck size={20} />
                                             {t('admin.mark_delivered') || "تم التسليم بنجاح (إغلاق الطلب)"}
@@ -197,7 +197,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                                     {order.status === "archived" && (
                                         <button
                                             onClick={() => updateStatus("pending")}
-                                            className="w-full py-5 bg-blue-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-blue-600/20 hover:scale-[1.02] active:scale-95 transition-all"
+                                            className="w-full py-2.5 text-sm bg-blue-600 text-white rounded-2xl font-black text-sm flex items-center justify-center gap-3 shadow-xl shadow-blue-600/20 hover:scale-[1.02] active:scale-95 transition-all"
                                         >
                                             <FiRotateCw size={20} />
                                             {t('admin.restore') || "استعادة الطلب ونقله للنشطة"}
@@ -209,11 +209,11 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                             <div className="h-px bg-gray-100" />
 
                             {/* Customer Info */}
-                            <section className="space-y-6">
+                            <section className="space-y-3">
                                 <h3 className="text-xs font-black uppercase tracking-widest text-gray-400">{t('admin.customer_details')}</h3>
-                                <div className="grid gap-6 bg-gray-50 p-6 rounded-4xl border border-gray-100">
+                                <div className="grid gap-3 bg-gray-50 p-3 rounded-2xl border border-gray-100">
                                     <div className="flex items-center gap-5">
-                                        <div className="w-12 h-12 rounded-2xl bg-white shadow-soft flex items-center justify-center text-primary border border-gray-100">
+                                        <div className="w-9 h-9 rounded-2xl bg-white shadow-soft flex items-center justify-center text-primary border border-gray-100">
                                             <FiUser size={22} />
                                         </div>
                                         <div>
@@ -223,7 +223,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                                     </div>
                                     {order.customer?.phone && (
                                         <div className="flex items-center gap-5 transition-transform hover:scale-[1.02] cursor-pointer group" onClick={() => OrderService.notifyCustomer(order, 'confirm')}>
-                                            <div className="w-12 h-12 rounded-2xl bg-emerald-50 shadow-soft flex items-center justify-center text-emerald-600 border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                            <div className="w-9 h-9 rounded-2xl bg-emerald-50 shadow-soft flex items-center justify-center text-emerald-600 border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white transition-all">
                                                 <FiPhone size={22} />
                                             </div>
                                             <div>
@@ -237,7 +237,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                                     )}
                                     {order.customer?.address && (
                                         <div className="flex items-center gap-5">
-                                            <div className="w-12 h-12 rounded-2xl bg-white shadow-soft flex items-center justify-center text-orange-500 border border-gray-100">
+                                            <div className="w-9 h-9 rounded-2xl bg-white shadow-soft flex items-center justify-center text-orange-500 border border-gray-100">
                                                 <FiMapPin size={22} />
                                             </div>
                                             <div>
@@ -250,14 +250,14 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                             </section>
 
                             {/* Items List */}
-                            <section className="space-y-6">
+                            <section className="space-y-3">
                                 <div className="flex justify-between items-center">
                                     <h3 className="text-xs font-black uppercase tracking-widest text-gray-400">{t('admin.ordered_items')}</h3>
                                     <span className="px-4 py-1.5 rounded-xl bg-gray-100 text-gray-500 text-[10px] font-black uppercase tracking-widest">
                                         {order.items?.length} {t('common.items')}
                                     </span>
                                 </div>
-                                <div className="bg-gray-50 rounded-4xl border border-gray-100 overflow-hidden divide-y divide-gray-100 shadow-inner">
+                                <div className="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden divide-y divide-gray-100 shadow-inner">
                                     {order.items?.map((item, idx) => (
                                         <div key={idx} className="p-5 flex justify-between items-center group hover:bg-white transition-all">
                                             <div className="flex items-center gap-5">
@@ -277,11 +277,11 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                             </section>
 
                             {/* Financial Summary */}
-                            <section className="bg-primary/5 rounded-[2.5rem] p-8 border border-primary/10 space-y-6 shadow-inner">
+                            <section className="bg-primary/5 rounded-2xl p-3 border border-primary/10 space-y-6 shadow-inner">
                                 <div className="flex justify-between items-baseline">
                                     <span className="text-xs font-black uppercase tracking-[0.2em] text-primary/60">{t('common.total')}</span>
                                     <div className="text-right">
-                                        <div className="text-5xl font-black text-primary tracking-tighter leading-none">{order.totalAmount}<span className="text-lg ml-1 opacity-50">₪</span></div>
+                                        <div className="text-3xl font-black text-primary tracking-tighter leading-none">{order.totalAmount}<span className="text-lg ml-1 opacity-50">₪</span></div>
                                         <div className={`text-[11px] font-black uppercase mt-2 tracking-widest ${order.paymentStatus === 'paid' ? 'text-emerald-600' : 'text-secondary'}`}>
                                             {order.paymentStatus === 'paid' ? t('admin.paid') : t('admin.unpaid')}
                                         </div>
@@ -290,7 +290,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
 
                                 <button
                                     onClick={updatePayment}
-                                    className={`w-full flex items-center justify-center gap-4 py-5 rounded-2xl font-black text-sm transition-all border ${order.paymentStatus === "paid"
+                                    className={`w-full flex items-center justify-center gap-4 py-2.5 rounded-xl font-black text-sm transition-all border ${order.paymentStatus === "paid"
                                         ? "bg-emerald-500 text-white border-emerald-400 shadow-xl shadow-emerald-500/20"
                                         : "bg-white text-secondary border-secondary/20 hover:bg-secondary/5 shadow-soft"
                                         }`}
@@ -301,7 +301,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                             </section>
 
                             {order.customer?.notes && (
-                                <section className="p-6 rounded-4xl bg-amber-50 border border-amber-100 space-y-4">
+                                <section className="p-3 rounded-2xl bg-amber-50 border border-amber-100 space-y-4">
                                     <div className="flex items-center gap-3 text-xs font-black text-amber-600 uppercase tracking-widest">
                                         <FiMessageSquare size={18} />
                                         <span>{t('whatsapp.notes')}</span>
@@ -315,7 +315,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                         </div>
 
                         {/* Sticky Bottom Actions */}
-                        <div className="p-8 border-t border-gray-100 bg-white flex flex-col gap-3 shrink-0">
+                        <div className="p-3 sm:p-4 border-t border-gray-100 bg-white flex flex-col gap-3 shrink-0">
                             {/* Hard Delete for Cancelled/Archived orders */}
                             {(order.status === "cancelled" || order.status === "archived") && (
                                 !showHardDeleteConfirm ? (
@@ -353,7 +353,7 @@ export default function OrderDetailsDrawer({ order, isOpen, onClose }: Props) {
                             )}
                             <button
                                 onClick={onClose}
-                                className="flex-1 py-5 bg-gray-50 text-gray-900 border border-gray-100 rounded-2xl font-black text-sm hover:bg-gray-100 transition-all active:scale-95 flex items-center justify-center gap-3 shadow-soft"
+                                className="flex-1 py-2.5 bg-gray-50 text-gray-900 border border-gray-100 rounded-2xl font-black text-sm hover:bg-gray-100 transition-all active:scale-95 flex items-center justify-center gap-3 shadow-soft"
                             >
                                 <FiChevronRight className={isRtl ? "rotate-180" : ""} size={20} />
                                 {t('common.close')}

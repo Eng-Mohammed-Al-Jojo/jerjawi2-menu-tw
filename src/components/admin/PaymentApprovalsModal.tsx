@@ -34,43 +34,43 @@ export default function PaymentApprovalsModal({ isOpen, onClose, payments, onApp
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="relative w-full max-w-4xl bg-white rounded-[3rem] border border-gray-100 shadow-premium overflow-hidden z-10 flex flex-col max-h-[85vh]"
+                        className="relative w-full max-w-[22rem] sm:max-w-sm bg-white rounded-2xl border border-gray-100 shadow-premium overflow-hidden z-10 flex flex-col max-h-[85vh]"
                     >
                         {/* Header */}
-                        <div className="p-8 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+                        <div className="p-3 sm:p-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
                             <div className="flex items-center gap-5">
-                                <div className="p-4 bg-amber-500 text-white rounded-2xl shadow-lg shadow-amber-500/20">
+                                <div className="p-2.5 bg-amber-500 text-white rounded-2xl shadow-lg shadow-amber-500/20">
                                     <FiDollarSign size={24} />
                                 </div>
                                 <div>
-                                    <h2 className="text-2xl font-black text-gray-900 tracking-tight">{t('admin.payment_approvals')}</h2>
+                                    <h2 className="text-lg font-extrabold text-gray-900 tracking-tight">{t('admin.payment_approvals')}</h2>
                                     <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mt-1">{t('admin.payment_editor_desc')}</p>
                                 </div>
                             </div>
-                            <button onClick={onClose} className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white text-gray-400 hover:text-secondary hover:bg-secondary/10 transition-all border border-gray-100 shadow-soft">
+                            <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-2xl bg-white text-gray-400 hover:text-secondary hover:bg-secondary/10 transition-all border border-gray-100 shadow-soft">
                                 <FiX size={24} />
                             </button>
                         </div>
 
                         {/* Content */}
-                        <div className="flex-1 overflow-y-auto p-10 custom-scrollbar space-y-12">
+                        <div className="flex-1 overflow-y-auto p-4 sm:p-5 custom-scrollbar space-y-4">
 
                             {/* Pending Section */}
-                            <section className="space-y-6">
+                            <section className="space-y-3">
                                 <h3 className="text-xs font-black text-amber-500 uppercase tracking-[0.2em] flex items-center gap-3">
                                     <FiClock size={18} /> {t('admin.pending_approvals')}
                                 </h3>
 
                                 {pendingPayments.length === 0 ? (
-                                    <div className="py-16 text-center bg-gray-50 rounded-[2.5rem] border-2 border-dashed border-gray-100">
+                                    <div className="py-10 text-center bg-gray-50 rounded-2xl border-2 border-dashed border-gray-100">
                                         <p className="text-gray-400 font-bold text-sm">{t('admin.no_pending_payments')}</p>
                                     </div>
                                 ) : (
-                                    <div className="grid gap-6">
+                                    <div className="grid gap-3">
                                         {pendingPayments.map((payment) => (
-                                            <div key={payment.id} className="p-8 bg-white border border-gray-100 rounded-[2.5rem] shadow-soft hover:shadow-premium transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                                            <div key={payment.id} className="p-3 bg-white border border-gray-100 rounded-2xl shadow-soft hover:shadow-premium transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
                                                 <div className="flex items-start gap-6">
-                                                    <div className="w-16 h-16 rounded-3xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl shrink-0">
+                                                    <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl shrink-0">
                                                         <FiDollarSign />
                                                     </div>
                                                     <div className="space-y-1">
@@ -91,7 +91,7 @@ export default function PaymentApprovalsModal({ isOpen, onClose, payments, onApp
 
                                                 <div className="flex items-center gap-8 w-full md:w-auto justify-between md:justify-end">
                                                     <div className="text-right">
-                                                        <p className="text-2xl font-black text-primary">{payment.amount}₪</p>
+                                                        <p className="text-lg font-extrabold text-primary">{payment.amount}₪</p>
                                                         <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
                                                             {new Date(payment.createdAt).toLocaleTimeString(isRtl ? 'ar-EG' : 'en-US', { hour: '2-digit', minute: '2-digit' })}
                                                         </p>
@@ -121,11 +121,11 @@ export default function PaymentApprovalsModal({ isOpen, onClose, payments, onApp
 
                             {/* History Section */}
                             {historyPayments.length > 0 && (
-                                <section className="space-y-6">
+                                <section className="space-y-3">
                                     <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em] flex items-center gap-3">
                                         <FiInfo size={18} /> {t('admin.payment_history')}
                                     </h3>
-                                    <div className="bg-gray-50 rounded-[2.5rem] overflow-hidden border border-gray-100">
+                                    <div className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
                                         <table className="w-full text-right border-collapse">
                                             <thead>
                                                 <tr className="bg-gray-100/50">

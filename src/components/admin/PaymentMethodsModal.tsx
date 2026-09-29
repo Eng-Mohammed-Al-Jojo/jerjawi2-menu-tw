@@ -139,15 +139,15 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className={`relative w-full transition-all duration-500 bg-white rounded-[3rem] border border-gray-100 shadow-premium overflow-hidden z-10 flex flex-col max-h-[90vh] ${isGalleryOpen ? 'max-w-7xl' : 'max-w-5xl'}`}
+                        className={`relative w-full transition-all duration-500 bg-white rounded-2xl border border-gray-100 shadow-premium overflow-hidden z-10 flex flex-col max-h-[90vh] ${isGalleryOpen ? 'max-w-7xl' : 'max-w-5xl'}`}
                     >
-                        <div className="p-8 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+                        <div className="p-3 sm:p-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
                             <div className="flex items-center gap-5">
-                                <div className="p-4 bg-primary text-white rounded-2xl shadow-lg shadow-primary/20">
+                                <div className="p-2.5 bg-primary text-white rounded-2xl shadow-lg shadow-primary/20">
                                     <FiSettings size={24} />
                                 </div>
                                 <div>
-                                    <h2 className="text-2xl font-black text-gray-900 tracking-tight">{t('admin.manage_payment_methods')}</h2>
+                                    <h2 className="text-lg font-extrabold text-gray-900 tracking-tight">{t('admin.manage_payment_methods')}</h2>
                                     <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mt-1">{t('admin.payment_methods_config_desc')}</p>
                                 </div>
                             </div>
@@ -156,10 +156,10 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                             </button>
                         </div>
 
-                        <div className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar">
+                        <div className="flex-1 overflow-y-auto p-3 sm:p-4 custom-scrollbar">
                             <motion.div
                                 layout
-                                className="mb-8 p-6 rounded-3xl bg-primary/5 border border-primary/10 flex items-center justify-between gap-5"
+                                className="mb-4 p-3 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-between gap-5"
                             >
                                 <div>
                                     <h3 className="text-base font-black text-gray-900">{t('admin.enable_payment_screen')}</h3>
@@ -174,7 +174,7 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                             </motion.div>
 
                             <div className={`grid grid-cols-1 ${isGalleryOpen ? 'lg:grid-cols-3' : 'lg:grid-cols-2'} gap-10 transition-all duration-500`}>
-                                <div className="space-y-6">
+                                <div className="space-y-3">
                                     <div className="flex items-center justify-between mb-4">
                                         <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em] flex items-center gap-3">
                                             <FiList size={18} /> {t('admin.payment_methods_title')}
@@ -190,11 +190,11 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                     {loading ? (
                                         <div className="space-y-4">
                                             {[0, 1, 2].map((item) => (
-                                                <div key={item} className="h-24 rounded-3xl bg-gray-50 border border-gray-100 animate-pulse" />
+                                                <div key={item} className="h-24 rounded-xl bg-gray-50 border border-gray-100 animate-pulse" />
                                             ))}
                                         </div>
                                     ) : methods.length === 0 ? (
-                                        <div className="py-24 text-center bg-gray-50 rounded-[2.5rem] border-2 border-dashed border-gray-200">
+                                        <div className="py-10 text-center bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
                                             <FiSettings className="mx-auto text-gray-200 mb-6" size={48} />
                                             <p className="text-gray-400 font-black text-sm uppercase tracking-widest">{t('admin.no_payment_methods')}</p>
                                         </div>
@@ -204,10 +204,10 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                                 <div
                                                     key={method.id}
                                                     onClick={() => setEditingMethod(method)}
-                                                    className={`p-6 rounded-3xl border transition-all flex items-center justify-between cursor-pointer group ${editingMethod?.id === method.id ? 'bg-white border-primary shadow-premium' : 'bg-gray-50 border-gray-100 hover:bg-white hover:border-primary/20'} ${!method.isEnabled ? 'opacity-45' : ''}`}
+                                                    className={`p-3 rounded-xl border transition-all flex items-center justify-between cursor-pointer group ${editingMethod?.id === method.id ? 'bg-white border-primary shadow-premium' : 'bg-gray-50 border-gray-100 hover:bg-white hover:border-primary/20'} ${!method.isEnabled ? 'opacity-45' : ''}`}
                                                 >
                                                     <div className="flex items-center gap-5 min-w-0">
-                                                        <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center shrink-0 shadow-soft text-primary">
+                                                        <div className="w-10 h-10 rounded-xl bg-white border border-gray-100 flex items-center justify-center shrink-0 shadow-soft text-primary">
                                                             {method.imageUrl ? (
                                                                 <img src={method.imageUrl} alt="" className="w-10 h-10 object-contain" />
                                                             ) : (
@@ -215,7 +215,7 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                                             )}
                                                         </div>
                                                         <div className="min-w-0">
-                                                            <p className="font-black text-gray-900 text-lg leading-none truncate">{method.name || method.label}</p>
+                                                            <p className="font-black text-gray-900 text-base leading-none truncate">{method.name || method.label}</p>
                                                             <div className="flex flex-wrap items-center gap-2 mt-2">
                                                                 {!method.isEnabled && (
                                                                     <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded-lg border bg-rose-50 text-rose-600 border-rose-100">
@@ -264,7 +264,7 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                     )}
                                 </div>
 
-                                <div className="bg-gray-50 p-6 md:p-10 rounded-[3rem] border border-gray-100 h-fit sticky top-0 shadow-inner">
+                                <div className="bg-gray-50 p-3 sm:p-4 rounded-2xl border border-gray-100 h-fit sticky top-0 shadow-inner">
                                     <AnimatePresence mode="wait">
                                         {editingMethod ? (
                                             <motion.div
@@ -272,10 +272,10 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                                 initial={{ opacity: 0, scale: 0.95 }}
                                                 animate={{ opacity: 1, scale: 1 }}
                                                 exit={{ opacity: 0, scale: 0.95 }}
-                                                className="space-y-8"
+                                                className="space-y-4"
                                             >
                                                 <div className="flex items-center justify-between mb-2">
-                                                    <h3 className="text-xl font-black text-gray-900 tracking-tight">
+                                                    <h3 className="text-lg font-black text-gray-900 tracking-tight">
                                                         {editingMethod.id ? t('admin.edit_payment_method') : t('admin.add_payment_method')}
                                                     </h3>
                                                     <button onClick={() => setEditingMethod(null)} className="w-10 h-10 rounded-xl bg-white text-gray-400 hover:text-secondary hover:bg-secondary/10 border border-gray-100 transition-all flex items-center justify-center shadow-soft">
@@ -283,10 +283,10 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                                     </button>
                                                 </div>
 
-                                                <div className="space-y-6">
+                                                <div className="space-y-3">
                                                     <div>
                                                         <label className="text-[10px] font-black uppercase text-gray-400 tracking-[0.2em] block mb-3 px-1">شعار وسيلة الدفع</label>
-                                                        <div className="flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-3xl shadow-soft">
+                                                        <div className="flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl shadow-soft">
                                                             <div className="w-[52px] h-[52px] rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden shrink-0">
                                                                 {editingMethod.imageUrl ? (
                                                                     <img src={editingMethod.imageUrl} alt="" className="w-full h-full object-contain p-1" />
@@ -323,7 +323,7 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                                         <input
                                                             value={editingMethod.name || editingMethod.label || ""}
                                                             onChange={(e) => setEditingMethod({ ...editingMethod, name: e.target.value })}
-                                                            className="w-full bg-white border border-gray-100 rounded-2xl py-4 px-6 text-sm font-bold outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all shadow-soft"
+                                                            className="w-full bg-white border border-gray-100 rounded-2xl py-2.5 px-3 h-10 text-[13px] font-bold outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all shadow-soft"
                                                             placeholder={t('admin.method_label')}
                                                         />
                                                     </div>
@@ -335,7 +335,7 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                                                 <button
                                                                     key={type}
                                                                     onClick={() => setEditingMethod({ ...editingMethod, type })}
-                                                                    className={`py-4 rounded-2xl border transition-all text-xs font-black uppercase tracking-widest ${editingMethod.type === type ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20' : 'bg-white text-gray-400 border-gray-100 hover:border-primary/30'}`}
+                                                                    className={`py-2.5 rounded-xl border transition-all text-xs font-black uppercase tracking-widest ${editingMethod.type === type ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20' : 'bg-white text-gray-400 border-gray-100 hover:border-primary/30'}`}
                                                                 >
                                                                     {t(`admin.payment_type_${type}`)}
                                                                 </button>
@@ -346,10 +346,10 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                                     <div>
                                                         <label className="text-[10px] font-black uppercase text-gray-400 tracking-[0.2em] block mb-3 px-1">{t('admin.method_details')}</label>
                                                         <textarea
-                                                            rows={5}
+                                                            rows={3}
                                                             value={editingMethod.details || ""}
                                                             onChange={(e) => setEditingMethod({ ...editingMethod, details: e.target.value })}
-                                                            className="w-full bg-white border border-gray-100 rounded-2xl py-4 px-6 text-sm font-bold outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all shadow-soft resize-none"
+                                                            className="w-full bg-white border border-gray-100 rounded-2xl py-2.5 px-3 text-[13px] font-bold outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all shadow-soft resize-none"
                                                             placeholder={t('admin.method_details_placeholder')}
                                                         />
                                                     </div>
@@ -374,7 +374,7 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
 
                                                 <button
                                                     onClick={handleSave}
-                                                    className="w-full py-5 bg-primary text-white rounded-2xl font-black shadow-xl shadow-primary/20 flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-95 transition-all text-sm uppercase tracking-widest"
+                                                    className="w-full py-2.5 text-sm bg-primary text-white rounded-2xl font-black shadow-xl shadow-primary/20 flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-95 transition-all text-sm uppercase tracking-widest"
                                                 >
                                                     <FiSave size={20} /> {t('common.save')}
                                                 </button>
@@ -386,7 +386,7 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                                 animate={{ opacity: 1 }}
                                                 className="h-[420px] flex flex-col items-center justify-center text-center p-10 space-y-6"
                                             >
-                                                <div className="w-24 h-24 rounded-4xl bg-white shadow-soft flex items-center justify-center text-primary/10 border border-gray-50">
+                                                <div className="w-12 h-12 rounded-2xl bg-white shadow-soft flex items-center justify-center text-primary/10 border border-gray-50">
                                                     <FiSettings size={48} />
                                                 </div>
                                                 <div>
@@ -404,7 +404,7 @@ export default function PaymentMethodsModal({ isOpen, onClose }: Props) {
                                             initial={{ opacity: 0, x: 20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             exit={{ opacity: 0, x: 20 }}
-                                            className="bg-white p-6 rounded-[3rem] border border-gray-100 shadow-premium flex flex-col h-full overflow-hidden"
+                                            className="bg-white p-6 rounded-2xl border border-gray-100 shadow-premium flex flex-col h-full overflow-hidden"
                                         >
                                             <div className="flex items-center justify-between mb-6">
                                                 <h3 className="text-sm font-black text-gray-900 uppercase tracking-widest">معرض الصور</h3>

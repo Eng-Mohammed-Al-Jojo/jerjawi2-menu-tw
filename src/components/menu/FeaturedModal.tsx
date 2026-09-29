@@ -34,16 +34,16 @@ export default function FeaturedModal({ isOpen, onClose, items, orderSystem, onI
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="relative w-full max-w-sm max-h-[85vh] bg-(--bg-card) rounded-[3rem] shadow-2xl overflow-hidden border border-white/10 flex flex-col"
+            className="relative w-full max-w-[22rem] sm:max-w-sm max-h-[85vh] bg-(--bg-card) rounded-2xl shadow-2xl overflow-hidden border border-white/10 flex flex-col"
           >
             {/* Header */}
-            <div className="p-6 sm:p-8 flex items-center justify-between border-b border-(--border-color)/30 bg-linear-to-b from-orange-500/10 to-transparent">
+            <div className="p-3 sm:p-4 flex items-center justify-between border-b border-(--border-color)/30 bg-linear-to-b from-orange-500/10 to-transparent">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/20">
-                  <FiStar size={24} className="fill-current" />
+                <div className="w-9 h-9 rounded-2xl bg-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/20">
+                  <FiStar size={18} className="fill-current" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-black text-(--text-main) tracking-tight">
+                  <h2 className="text-lg font-extrabold text-(--text-main) tracking-tight">
                     {t("menu.featured_items") || "الأصناف المميزة"}
                   </h2>
                   <p className="text-xs font-bold text-orange-500 uppercase tracking-widest opacity-80">
@@ -80,7 +80,7 @@ export default function FeaturedModal({ isOpen, onClose, items, orderSystem, onI
               </div>
 
               {items.length === 0 && (
-                <div className="py-20 text-center space-y-4">
+                <div className="py-10 text-center space-y-3">
                   <div className="text-6xl opacity-20">⭐</div>
                   <p className="text-(--text-muted) font-bold">{t("menu.no_featured") || "لا توجد أصناف مميزة حالياً"}</p>
                 </div>

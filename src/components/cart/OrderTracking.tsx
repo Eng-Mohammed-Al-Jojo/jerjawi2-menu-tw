@@ -95,7 +95,7 @@ export default function OrderTracking({ orderId, onClose, paymentRecord: initial
     return (
         <div className="flex flex-col h-full">
             {/* Header */}
-            <div className="px-6 sm:px-8 pt-6 pb-4 flex items-center justify-between border-b border-gray-100 shrink-0 bg-white">
+            <div className="px-4 pt-4 pb-3 flex items-center justify-between border-b border-gray-100 shrink-0 bg-white">
                 <div className="flex items-center gap-3">
                     <div className="w-11 h-11 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20">
                         <FiMapPin size={18} />
@@ -110,17 +110,17 @@ export default function OrderTracking({ orderId, onClose, paymentRecord: initial
                 </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto custom-scrollbar px-6 sm:px-8 py-6 space-y-5 bg-gray-50">
+            <div className="flex-1 overflow-y-auto custom-scrollbar px-3 py-3 space-y-3 bg-gray-50">
                 <AnimatePresence mode="wait">
 
                     {/* COMPLETED */}
                     {isCompleted ? (
-                        <motion.div key="completed" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center text-center py-12 space-y-6">
-                            <div className="w-32 h-32 bg-emerald-500 text-white rounded-[3rem] flex items-center justify-center text-5xl shadow-premium">
+                        <motion.div key="completed" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center text-center py-6 space-y-3">
+                            <div className="w-16 h-16 bg-emerald-500 text-white rounded-3xl flex items-center justify-center text-3xl shadow-premium">
                                 <FiCheck size={56} strokeWidth={3} />
                             </div>
                             <div>
-                                <h3 className="text-2xl font-black text-gray-900">{t('common.order_delivered') || "تم تسليم طلبك! 🎉"}</h3>
+                                <h3 className="text-lg font-black text-gray-900">{t('common.order_delivered') || "تم تسليم طلبك! 🎉"}</h3>
                                 <p className="text-gray-400 font-bold mt-2 max-w-[260px] mx-auto leading-relaxed text-sm">
                                     {t('common.enjoy_meal') || "نتمنى لك وجبة شهية وتجربة رائعة معنا. ننتظرك مجدداً!"}
                                 </p>
@@ -142,7 +142,7 @@ export default function OrderTracking({ orderId, onClose, paymentRecord: initial
                             </div>
 
                             {/* Status Timeline */}
-                            <div className="bg-white border border-gray-100 rounded-[2.5rem] p-8 shadow-soft">
+                            <div className="bg-white border border-gray-100 rounded-2xl p-3 shadow-soft">
                                 <div className="relative">
                                     {/* Track BG */}
                                     <div className="absolute top-8 left-8 right-8 h-0.5 bg-gray-100 rounded-full" />
@@ -166,7 +166,7 @@ export default function OrderTracking({ orderId, onClose, paymentRecord: initial
                                                         animate={isCurrent ? { scale: [1, 1.12, 1], y: [0, -3, 0] } : {}}
                                                         transition={{ repeat: Infinity, duration: 2.5 }}
                                                         className={`
-                                                            w-16 h-16 rounded-2xl flex items-center justify-center border-2 shadow-lg transition-all duration-500
+                                                            w-12 h-12 rounded-2xl flex items-center justify-center border-2 shadow-lg transition-all duration-500
                                                             ${isCurrent ? colors.active + " ring-4 ring-offset-1 ring-current/20" : isDone ? colors.done : "bg-gray-50 text-gray-300 border-gray-100"}
                                                         `}
                                                     >
@@ -183,7 +183,7 @@ export default function OrderTracking({ orderId, onClose, paymentRecord: initial
                             </div>
 
                             {/* Order Items */}
-                            <div className="bg-white border border-gray-100 rounded-4xl p-6 shadow-soft space-y-5">
+                            <div className="bg-white border border-gray-100 rounded-2xl p-3 shadow-soft space-y-3">
                                 <div className="flex justify-between text-[10px] font-black text-gray-400 uppercase tracking-widest">
                                     <span>{t('admin.ordered_items')}</span>
                                     <span>{order.items?.length} {t('admin.products')}</span>
@@ -207,7 +207,7 @@ export default function OrderTracking({ orderId, onClose, paymentRecord: initial
 
                             {/* Payment Status */}
                             {(paymentRecord || order.paymentStatus) && (
-                                <div className="bg-white border border-gray-100 rounded-4xl p-6 shadow-soft space-y-4">
+                                <div className="bg-white border border-gray-100 rounded-2xl p-3 shadow-soft space-y-3">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2 text-gray-500 text-xs font-black uppercase tracking-widest">
                                             <FiDollarSign size={14} className="text-primary" />
@@ -249,8 +249,8 @@ export default function OrderTracking({ orderId, onClose, paymentRecord: initial
 
                     {/* WHATSAPP UNTRACKED */}
                     {isUntracked && !isCompleted && (
-                        <motion.div key="wa" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center text-center py-8 space-y-5">
-                            <div className="w-24 h-24 bg-green-50 text-green-500 rounded-3xl flex items-center justify-center text-5xl border border-green-100 shadow-sm">
+                        <motion.div key="wa" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-center text-center py-6 space-y-3">
+                            <div className="w-16 h-16 bg-green-50 text-green-500 rounded-3xl flex items-center justify-center text-3xl border border-green-100 shadow-sm">
                                 <FaWhatsapp />
                             </div>
                             <div>
@@ -276,10 +276,10 @@ export default function OrderTracking({ orderId, onClose, paymentRecord: initial
             </div>
 
             {/* Footer */}
-            <div className="px-6 sm:px-8 pb-6 pt-3 bg-white border-t border-gray-100 shrink-0">
+            <div className="px-3 pb-3 pt-3 bg-white border-t border-gray-100 shrink-0">
                 <button
                     onClick={onClose}
-                    className="w-full py-4 rounded-2xl bg-gray-50 text-gray-500 border border-gray-100 font-black text-sm hover:bg-gray-100 hover:text-gray-800 transition-all flex items-center justify-center gap-2 group"
+                    className="w-full py-2.5 rounded-2xl bg-gray-50 text-gray-500 border border-gray-100 font-black text-sm hover:bg-gray-100 hover:text-gray-800 transition-all flex items-center justify-center gap-2 group"
                 >
                     <FiChevronRight className={`transition-transform group-hover:translate-x-1 ${isRtl ? 'rotate-180 group-hover:-translate-x-1' : ''}`} size={18} />
                     {t('common.back_to_menu')}

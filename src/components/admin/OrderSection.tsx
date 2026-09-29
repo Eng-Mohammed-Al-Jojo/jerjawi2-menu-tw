@@ -60,7 +60,7 @@ const OrderSection: React.FC<Props> = ({ orders }) => {
         <div className="space-y-8">
             <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-12 px-2">
                 <div>
-                    <h2 className="text-3xl font-black text-gray-900 tracking-tight flex items-center gap-4">
+                    <h2 className="text-xl font-extrabold text-gray-900 tracking-tight flex items-center gap-4">
                         <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shadow-inner">
                             <FaHistory className="text-2xl" />
                         </div>
@@ -70,7 +70,7 @@ const OrderSection: React.FC<Props> = ({ orders }) => {
                         {t('admin.manage_orders')}
                     </p>
                 </div>
-                <div className="bg-white px-8 py-4 rounded-3xl border border-gray-100 flex items-center gap-4 self-end sm:self-auto shadow-premium">
+                <div className="bg-white px-8 py-4 rounded-xl border border-gray-100 flex items-center gap-4 self-end sm:self-auto shadow-premium">
                     <div className="flex flex-col items-end">
                         <span className="text-primary font-black text-3xl leading-none tracking-tighter">{orderArray.length}</span>
                         <span className="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-1">{t('admin.total_orders')}</span>
@@ -84,9 +84,9 @@ const OrderSection: React.FC<Props> = ({ orders }) => {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="bg-gray-50 rounded-[3rem] p-24 text-center border-2 border-dashed border-gray-200 shadow-inner"
+                            className="bg-gray-50 rounded-2xl p-24 text-center border-2 border-dashed border-gray-200 shadow-inner"
                         >
-                            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-8 text-5xl shadow-soft">
+                            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-8 text-5xl shadow-soft">
                                 📋
                             </div>
                             <p className="text-gray-400 font-black text-xl uppercase tracking-widest">{t('admin.no_orders')}</p>
@@ -103,7 +103,7 @@ const OrderSection: React.FC<Props> = ({ orders }) => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.03 }}
-                                    className={`bg-white rounded-[2.5rem] border transition-all duration-500 shadow-soft ${isOpen ? "border-primary shadow-premium ring-8 ring-primary/5" : "border-gray-100 hover:border-primary/30 hover:shadow-premium"
+                                    className={`bg-white rounded-2xl border transition-all duration-500 shadow-soft ${isOpen ? "border-primary shadow-premium ring-8 ring-primary/5" : "border-gray-100 hover:border-primary/30 hover:shadow-premium"
                                         }`}
                                 >
                                     <button
@@ -111,7 +111,7 @@ const OrderSection: React.FC<Props> = ({ orders }) => {
                                         className={`w-full ${isRtl ? 'text-right' : 'text-left'} flex flex-col md:flex-row md:items-center gap-6 p-8`}
                                     >
                                         <div className="flex items-center gap-6 flex-1">
-                                            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shadow-inner shrink-0 ${order.orderType === "in" ? "bg-amber-100 text-amber-600 border border-amber-200" : "bg-primary/10 text-primary border border-primary/10"
+                                            <div className={`w-11 h-11 rounded-2xl flex items-center justify-center text-2xl shadow-inner shrink-0 ${order.orderType === "in" ? "bg-amber-100 text-amber-600 border border-amber-200" : "bg-primary/10 text-primary border border-primary/10"
                                                 }`}>
                                                 {order.orderType === "in" ? <FaUtensils /> : <FaShoppingBag />}
                                             </div>
@@ -135,7 +135,7 @@ const OrderSection: React.FC<Props> = ({ orders }) => {
                                             <div className={`px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest border shrink-0 shadow-sm ${statusStyles}`}>
                                                 {getStatusName(order.status || "pending")}
                                             </div>
-                                            <div className="text-3xl font-black text-primary tracking-tighter whitespace-nowrap">
+                                            <div className="text-xl font-extrabold text-primary tracking-tighter whitespace-nowrap">
                                                 {order.totalAmount}<span className="text-sm font-bold opacity-40 ml-1">₪</span>
                                             </div>
                                             <div className={`text-gray-300 transition-transform duration-500 ${isOpen ? "rotate-180 text-primary" : ""}`}>
@@ -159,7 +159,7 @@ const OrderSection: React.FC<Props> = ({ orders }) => {
                                                                 <div className="w-2 h-4 bg-primary rounded-full shadow-sm" />
                                                                 {t('admin.customer_details')}
                                                             </h4>
-                                                            <div className="bg-white p-6 rounded-4xl border border-gray-100 shadow-soft space-y-4">
+                                                            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft space-y-4">
                                                                 {order.customer?.phone && (
                                                                     <p className="text-sm font-black text-gray-700 flex items-center gap-4">
                                                                         <span className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-xl shadow-inner border border-gray-100">📱</span>
@@ -186,7 +186,7 @@ const OrderSection: React.FC<Props> = ({ orders }) => {
                                                                 <div className="w-2 h-4 bg-secondary rounded-full shadow-sm" />
                                                                 {t('admin.ordered_items')}
                                                             </h4>
-                                                            <div className="bg-white p-6 rounded-4xl border border-gray-100 shadow-soft divide-y divide-gray-50">
+                                                            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-soft divide-y divide-gray-50">
                                                                 {order.items.map((item: any, i: number) => {
                                                                     const itemName = item.name || item.nameAr || item.nameEn;
                                                                     return (
